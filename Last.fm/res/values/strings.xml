@@ -4,5 +4,9 @@
     <string name="app_name">Last.fm</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-
+    <string name="welcome">Discover more music</string>
+	<string name="username">Username</string>
+	<string name="but_cmin">COME ON IN</string>
+	<string name="registration">Don`t have a profile</string>
+	<string name="forget">Forgot password</string>
 </resources>
