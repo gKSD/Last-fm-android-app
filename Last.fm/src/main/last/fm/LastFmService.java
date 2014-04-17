@@ -86,6 +86,12 @@ public class LastFmService extends IntentService {
             while ((bytesRead = response.read(buffer)) >= 0) {
                 lastFmResponse.append(buffer, 0, bytesRead);
             }
+            /*  Более медленная, но зато в строку (Можно использовать StringBuilder, будет быстрее)
+            BufferedReader reader = new BufferedReader(new InputStreamReader(response));
+            String line = "";
+            while ((line = reader.readLine()) != null) {
+                serverResponseMessage += line;
+            }  */
         } catch (IOException e) {
             e.printStackTrace();
         }
