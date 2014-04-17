@@ -20,17 +20,6 @@ import java.net.URL;
 public class LastFmService extends IntentService {
     String REQUEST_URL = "http://ws.audioscrobbler.com/2.0/?method=";
     String API_K = "544aa2e6717625cc3fd72da91fcfa7df";
-    /*private final IBinder lfBinder = new LocalBinder();
-    public class LocalBinder extends Binder {
-        LastFmService getService() {
-            return LastFmService.this;
-        }
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }*/
 
     public LastFmService () {
         super("LastFmService");
@@ -45,11 +34,12 @@ public class LastFmService extends IntentService {
         int ID = intent.getIntExtra("id",0);
         String method = null;
         String urlParams = "";
-        switch (ID): {
-            case 1: {
+        switch (ID)
+        {
+            case 1:
                 urlParams = intent.getStringExtra("Auth");
                 method = "auth.getMobileSession";
-            }
+
         }
 
         URL url = null;

@@ -16,19 +16,6 @@ public class LastFmServiceHelper extends Application {  //через это бу
     String API_SIG = "609a04e369e81ab1759e13f7c2a64559";
     Intent intent;
     private LastFmServiceHelper() {
-     /*   intent = new Intent("main.last.fm.LastFmService");
-        lfConnection = new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                bound = true;
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName componentName) {
-                bound = false;
-            }
-        };
-        bindService(intent, lfConnection, BIND_AUTO_CREATE);*/
 
     }
 
