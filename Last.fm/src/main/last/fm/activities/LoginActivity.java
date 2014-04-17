@@ -1,4 +1,4 @@
-package main.last.fm;
+package main.last.fm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import main.last.fm.LastFmServiceHelper;
+import main.last.fm.R;
 
 public class LoginActivity extends Activity {
     private LastFmServiceHelper lfServiceHelper;

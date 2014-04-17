@@ -1,4 +1,4 @@
-package main.last.fm;
+package main.last.fm.activities;
 
 import android.app.Activity;
 
