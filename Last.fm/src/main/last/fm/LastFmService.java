@@ -44,7 +44,7 @@ public class LastFmService extends IntentService {
 
         URL url = null;
         try {
-            url = new URL(REQUEST_URL+method+"&api_key="+API_K);
+            url = new URL(REQUEST_URL+method+"&api_key="+API_K+"&format=json");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
