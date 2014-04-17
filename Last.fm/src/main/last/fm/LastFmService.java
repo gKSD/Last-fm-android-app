@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
+import org.apache.http.util.ByteArrayBuffer;
+
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -75,13 +77,14 @@ public class LastFmService extends IntentService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        InputStream is = null;
+        InputStream response = null;
         try {
-            is = connection.getInputStream();
+            response = connection.getInputStream();
             int bytesRead = -1;
+            ByteArrayBuffer lastFmResponse = new ByteArrayBuffer(50);
             byte[] buffer = new byte[1024];
-            while ((bytesRead = is.read(buffer)) >= 0) {
-            // process the buffer, "bytesRead" have been read, no more, no less
+            while ((bytesRead = response.read(buffer)) >= 0) {
+                lastFmResponse.append(buffer, 0, bytesRead);
             }
         } catch (IOException e) {
             e.printStackTrace();
