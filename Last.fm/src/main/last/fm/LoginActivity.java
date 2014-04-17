@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 public class LoginActivity extends Activity {
     private LastFmServiceHelper lfServiceHelper;
+    private int ACTIVITY_ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class LoginActivity extends Activity {
                 EditText passwdEdt = (EditText)findViewById(R.id.editText2);
                 String login = loginEdt.getText().toString();
                 String passwd = passwdEdt.getText().toString();
-                lfServiceHelper.getAuthParams(login,passwd);
+                lfServiceHelper.authIntent(login,passwd, ACTIVITY_ID);
             }
         });
     }
@@ -32,7 +33,6 @@ public class LoginActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.login, menu);
         return true;
     }

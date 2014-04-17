@@ -10,4 +10,6 @@
 	<string name="registration">Don`t have a profile</string>
 	<string name="forget">Forgot password</string>
 
+    <string name="bind">Bind</string>
+    <string name="unbind">Unbind</string>
 </resources>
