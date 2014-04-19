@@ -17,21 +17,11 @@ public class LoginActivity extends Activity {
     private LastFmServiceHelper lfServiceHelper;
     private int ACTIVITY_ID = 0;
 
-    //****
-    public static String PACKAGE_NAME;
-    public static Context context;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        context = getApplicationContext();
-        if (context==null) Log.i("TTTT", "tttt");
-        //*****
-
-        PACKAGE_NAME = getApplicationContext().getPackageName();
-        Log.i("asdadsa ", PACKAGE_NAME);
 
         final LoginActivity ptr = this;
 
