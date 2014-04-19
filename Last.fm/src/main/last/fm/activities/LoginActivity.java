@@ -33,6 +33,7 @@ public class LoginActivity extends Activity {
         PACKAGE_NAME = getApplicationContext().getPackageName();
         Log.i("asdadsa ", PACKAGE_NAME);
 
+        final LoginActivity ptr = this;
 
         Button comeInBtn = (Button)findViewById(R.id.button);
         lfServiceHelper = LastFmServiceHelper.getInstance();
@@ -43,12 +44,10 @@ public class LoginActivity extends Activity {
                 EditText passwdEdt = (EditText) findViewById(R.id.editText2);
                 String login = loginEdt.getText().toString();
                 String passwd = passwdEdt.getText().toString();
-                lfServiceHelper.authIntent(login, passwd, ACTIVITY_ID);
+                lfServiceHelper.authIntent( ptr, login, passwd, ACTIVITY_ID);
+
             }
         });
-        Log.i("asdasd", "adasd");
-        //this.
-        Log.i("aaaaaa", "bbbbbb");
     }
 
 
