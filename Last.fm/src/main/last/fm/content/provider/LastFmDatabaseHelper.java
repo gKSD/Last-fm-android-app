@@ -13,7 +13,6 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
 
 
     private Integer version;
-    private SQLiteDatabase db;
 
     LastFmDatabaseHelper(Context context) {
         super(context, DBNAME, null, 1);

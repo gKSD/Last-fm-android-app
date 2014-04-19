@@ -4,6 +4,7 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 /**
@@ -15,6 +16,10 @@ public class LastFmContentProvider extends ContentProvider {
     private static UriMatcher sUriMatcher;
     public static final String AUTHORITY = "main.last.fm.content.provider";
 
+
+    private LastFmDatabaseHelper databaseHelper;
+    private SQLiteDatabase db;
+
     LastFmContentProvider()
     {
         sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -24,11 +29,30 @@ public class LastFmContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        return false;
+        databaseHelper = new LastFmDatabaseHelper(getContext());
+        return true;
     }
 
     @Override
     public Cursor query(Uri uri, String[] strings, String s, String[] strings2, String s2) {
+        db = databaseHelper.getWritableDatabase();
+        /*Cursor cursor = db.query(STUDENT_TABLE, projection, selection,selectionArgs, null, null, sortOrder);
+        cursor.setNotificationUri(getContext().getContentResolver(), CONTACT_CONTENT_URI);
+        return cursor;
+        return null;*/
+        switch (sUriMatcher.match(uri))
+        {
+            // If the incoming URI was for all of table3
+            case 1:
+                //id = databaseHelper.getWritableDatabase().insert(LastFmDatabaseHelper.STUDENT_TABLE, null, values);
+                break;
+            case 2:
+                //id = databaseHelper.getWritableDatabase().insert(LastFmDatabaseHelper.STUDENT_LIST_TABLE, null, values);
+                break;
+
+            default:
+                // If the URI is not recognized, you should do some error handling here.
+        }
         return null;
     }
 
@@ -39,6 +63,20 @@ public class LastFmContentProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
+        Long id;
+        switch (sUriMatcher.match(uri))
+        {
+            // If the incoming URI was for all of table3
+            case 1:
+                //id = databaseHelper.getWritableDatabase().insert(LastFmDatabaseHelper.STUDENT_TABLE, null, values);
+                break;
+            case 2:
+                //id = databaseHelper.getWritableDatabase().insert(LastFmDatabaseHelper.STUDENT_LIST_TABLE, null, values);
+                break;
+
+            default:
+                // If the URI is not recognized, you should do some error handling here.
+        }
         return null;
     }
 
