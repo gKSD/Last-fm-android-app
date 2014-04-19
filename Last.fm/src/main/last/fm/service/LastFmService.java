@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
 import org.apache.http.util.ByteArrayBuffer;
 
@@ -15,6 +16,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by step on 17.04.14.
@@ -30,6 +33,7 @@ public class LastFmService extends IntentService {
     public void onCreate() {
         super.onCreate();
     }
+
 
     @Override
     protected void onHandleIntent(Intent intent) {
@@ -86,6 +90,7 @@ public class LastFmService extends IntentService {
             while ((bytesRead = response.read(buffer)) >= 0) {
                 lastFmResponse.append(buffer, 0, bytesRead);
             }
+            Log.i("AUTH", buffer.toString());
             /*  Более медленная, но зато в строку (Можно использовать StringBuilder, будет быстрее)
             BufferedReader reader = new BufferedReader(new InputStreamReader(response));
             String line = "";
