@@ -47,7 +47,6 @@ public class LastFmService extends IntentService {
                 method = "auth.getMobileSession";
 
         }
-
         URL url = null;
         try {
             url = new URL(REQUEST_URL+method+"&api_key="+API_K+"&format=json");
