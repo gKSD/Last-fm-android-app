@@ -1,16 +1,13 @@
 package main.last.fm.activities;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import main.last.fm.LastFmServiceHelper;
+import main.last.fm.service.LastFmServiceHelper;
 import main.last.fm.R;
 
 public class LoginActivity extends Activity {
@@ -34,12 +31,10 @@ public class LoginActivity extends Activity {
                 EditText passwdEdt = (EditText) findViewById(R.id.editText2);
                 String login = loginEdt.getText().toString();
                 String passwd = passwdEdt.getText().toString();
-                lfServiceHelper.authIntent( ptr, login, passwd, ACTIVITY_ID);
-
+                lfServiceHelper.authIntent(ptr, login, passwd, ACTIVITY_ID);
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

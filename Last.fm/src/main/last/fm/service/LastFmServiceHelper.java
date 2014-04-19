@@ -1,17 +1,7 @@
-package main.last.fm;
+package main.last.fm.service;
 
-import android.app.Application;
-import android.app.PendingIntent;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.util.Log;
-import android.view.ContextThemeWrapper;
-
-import main.last.fm.activities.LoginActivity;
 
 /**
  * Created by step on 17.04.14.

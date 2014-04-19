@@ -1,4 +1,4 @@
-package main.last.fm;
+package main.last.fm.service;
 
 import android.app.IntentService;
 import android.app.Service;
