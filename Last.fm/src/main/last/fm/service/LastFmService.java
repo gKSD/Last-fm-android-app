@@ -9,9 +9,11 @@ import android.util.Log;
 
 import org.apache.http.util.ByteArrayBuffer;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -23,8 +25,9 @@ import java.security.NoSuchAlgorithmException;
  * Created by step on 17.04.14.
  */
 public class LastFmService extends IntentService {
-    String REQUEST_URL = "http://ws.audioscrobbler.com/2.0/?method=";
+    String REQUEST_URL = "https://ws.audioscrobbler.com/2.0/?method=";
     String API_K = "544aa2e6717625cc3fd72da91fcfa7df";
+
 
     public LastFmService () {
         super("LastFmService");
@@ -40,17 +43,18 @@ public class LastFmService extends IntentService {
         int ID = intent.getIntExtra("id",0);
         String method = null;
         String urlParams = "";
+      //  method = new String("auth.getMobileSession");
         switch (ID)
         {
-            case 1:
+            case 0:
                 urlParams = intent.getStringExtra("Auth");
-                method = "auth.getMobileSession";
-
+                method = new String("auth.getMobileSession");
         }
         URL url = null;
         Log.i("AUTH","AUTH");
         try {
-            url = new URL(REQUEST_URL+method+"&api_key="+API_K+"&format=json");
+            url = new URL(REQUEST_URL+method+"&"+urlParams+"&format=json");
+            Log.i("AUTH",REQUEST_URL+method+"&"+urlParams+"&format=json");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -86,17 +90,20 @@ public class LastFmService extends IntentService {
             response = connection.getInputStream();
             int bytesRead = -1;
             ByteArrayBuffer lastFmResponse = new ByteArrayBuffer(50);
-            byte[] buffer = new byte[1024];
+           /* byte[] buffer = new byte[1024];
             while ((bytesRead = response.read(buffer)) >= 0) {
                 lastFmResponse.append(buffer, 0, bytesRead);
-            }
-            Log.i("AUTH", buffer.toString());
+            }*/
+
             /*  Более медленная, но зато в строку (Можно использовать StringBuilder, будет быстрее)
+            */
             BufferedReader reader = new BufferedReader(new InputStreamReader(response));
             String line = "";
+            String serverResponseMessage = new String();
             while ((line = reader.readLine()) != null) {
-                serverResponseMessage += line;
-            }  */
+                serverResponseMessage = line;
+            }
+            Log.i("AUTH", serverResponseMessage);
         } catch (IOException e) {
             e.printStackTrace();
         }

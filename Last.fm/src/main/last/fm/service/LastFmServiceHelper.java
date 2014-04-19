@@ -15,8 +15,9 @@ public class LastFmServiceHelper{
     //для формирования intenta
 
     boolean bound = false;
-    String API_KEY = "544aa2e6717625cc3fd72da91fcfa7df";
+    String API_KEY = new String("544aa2e6717625cc3fd72da91fcfa7df","UTF-8");
     String API_SIG = "609a04e369e81ab1759e13f7c2a64559";
+    String SECRET_K = "609a04e369e81ab1759e13f7c2a64559";
     //String API_SIG;
 
     private LastFmServiceHelper() {
@@ -32,7 +33,7 @@ public class LastFmServiceHelper{
 
     public void authIntent(Context context, String login, String passwd, int ActivityNumber)
     {
-        API_SIG = generateApiSig("auth.getMobileSession", login, passwd);
+        API_SIG = generateApiSig("auth.getMobileSession",passwd,login);
         String strAuth = "password="+passwd+"&username="+ login+"&api_key="+API_KEY+"&api_sig="+API_SIG;
         Log.i("AUTH", login);
         Log.i("AUTH", strAuth);
@@ -44,7 +45,8 @@ public class LastFmServiceHelper{
     }
 
     public String generateApiSig(String method, String psw, String username) {
-        return md5("api_key" + this.API_KEY + "method" + method + "password" + psw + "username" + username);
+        Log.i("MD5","api_key" + this.API_KEY + "method" + method + "password" + psw + "username" + username + SECRET_K);
+        return md5("api_key" + this.API_KEY + "method" + method + "password" + psw + "username" + username + SECRET_K);
     }
     private static String md5(String s) { try {
 
