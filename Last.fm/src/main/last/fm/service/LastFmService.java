@@ -72,6 +72,7 @@ public class LastFmService extends IntentService {
         connection.setDoOutput(true);
         connection.setDoInput(true);
         connection.setInstanceFollowRedirects(false);
+
         try {
             connection.setRequestMethod("POST");
         } catch (ProtocolException e) {
@@ -110,7 +111,6 @@ public class LastFmService extends IntentService {
             while ((line = reader.readLine()) != null) {
                 serverResponseMessage = line;
             }
-            Log.i("AUTH", serverResponseMessage);
         } catch (IOException e) {
             e.printStackTrace();
         }
