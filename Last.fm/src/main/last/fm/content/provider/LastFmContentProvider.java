@@ -27,11 +27,9 @@ public class LastFmContentProvider extends ContentProvider {
 
     public LastFmContentProvider()
     {
-        Log.i(LOG_TAG, "##****************************************************");
     }
 
     private static UriMatcher buildUriMatcher() {
-        Log.i(LOG_TAG, "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = LastFmMainData.CONTENT_AUTHORITY;
 
@@ -42,7 +40,6 @@ public class LastFmContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        Log.i(LOG_TAG, "#############################################33333");
         final Context context = getContext();
         databaseHelper = new LastFmDatabaseHelper(context);
         return true;
@@ -50,7 +47,7 @@ public class LastFmContentProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        Log.i(LOG_TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        Log.i(LOG_TAG, "&&& query,  selection = "+ selection);
         db = databaseHelper.getWritableDatabase();
         /*Cursor cursor = db.query(STUDENT_TABLE, projection, selection,selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), CONTACT_CONTENT_URI);
@@ -60,6 +57,7 @@ public class LastFmContentProvider extends ContentProvider {
         {
 
             case USERS:
+                Log.i(LOG_TAG, "33");
                 return databaseHelper.getWritableDatabase().query(LastFmMainData.PATH_USERS, projection,selection, selectionArgs, null, null, sortOrder);
             default:
 

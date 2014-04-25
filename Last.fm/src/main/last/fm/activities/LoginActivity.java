@@ -1,5 +1,6 @@
 package main.last.fm.activities;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,14 +28,29 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Log.i(LOG_TAG, "oooooooooooooooooooooooooooo");
-
+        //******************************************************************************************************************************************************************************
+        //пример запроса в бд
+        // ПОКА НЕ УДАЛЯТЬ
         String[] projection = {LastFmMainData.UsersColumns.LOGIN, LastFmMainData.UsersColumns.PASSWORD, LastFmMainData.UsersColumns.MOBILE_SESSION};
         //String selection  = MainDatabaseHelper."";
         Cursor cursor = getContentResolver().query(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), projection, null, null, null);
-        if (cursor != null) Log.i(LOG_TAG, "Ok");
-        else Log.i(LOG_TAG, "FAILED!!!!!!!");
+        if (cursor != null) Log.i(LOG_TAG, " get cursor -- Ok " + cursor.toString());
+        else Log.i(LOG_TAG, "get cursor FAILED!");
 
+        //пример инсерта
+        // ПОКА НЕ УДАЛЯТЬ
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(LastFmMainData.UsersColumns.LOGIN, "Sofia");
+        contentValues.put(LastFmMainData.UsersColumns.PASSWORD, "password");
+        contentValues.put(LastFmMainData.UsersColumns.MOBILE_SESSION, "qwertyujikolp");
+        getContentResolver().insert(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), contentValues);
+
+        String selection  = "login = ?";
+        String[] selectionArgs = {"Sofia"};
+        cursor = getContentResolver().query(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), projection, selection, selectionArgs, null);
+        if (cursor != null) Log.i(LOG_TAG, " get cursor -- Ok "+ cursor.getColumnCount());
+        else Log.i(LOG_TAG, "get cursor FAILED! " );
+        //******************************************************************************************************************************************************************************
 
         final LoginActivity ptr = this;
 

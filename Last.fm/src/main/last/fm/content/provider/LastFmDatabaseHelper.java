@@ -55,13 +55,16 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
     public long insertUser(String table, ContentValues contentValues)
     {
 
-        String sql = "INSERT OR IGNORE INTO " + table + "VALUES (" + contentValues.get(LastFmMainData.UsersColumns.LOGIN) + "," + contentValues.get(LastFmMainData.UsersColumns.PASSWORD)
-                + "," + contentValues.get(LastFmMainData.UsersColumns.MOBILE_SESSION) +"); " +
-                "UPDATE " + table + " SET " + LastFmMainData.UsersColumns.MOBILE_SESSION + " = " + contentValues.get(LastFmMainData.UsersColumns.MOBILE_SESSION) +
-                " WHERE " + LastFmMainData.UsersColumns.LOGIN + " = " + contentValues.get(LastFmMainData.UsersColumns.LOGIN) + ";";
+        String sql1 = "INSERT OR IGNORE INTO " + table + "( '"+LastFmMainData.UsersColumns.LOGIN+"', '"+LastFmMainData.UsersColumns.PASSWORD+"', '"+ LastFmMainData.UsersColumns.MOBILE_SESSION +"') VALUES ('" + contentValues.get(LastFmMainData.UsersColumns.LOGIN) + "', '" + contentValues.get(LastFmMainData.UsersColumns.PASSWORD) +"', '"
+            + contentValues.get(LastFmMainData.UsersColumns.MOBILE_SESSION) +"'); ";
+        String sql2 = "UPDATE " + table + " SET " + LastFmMainData.UsersColumns.MOBILE_SESSION + " = '" + contentValues.get(LastFmMainData.UsersColumns.MOBILE_SESSION) +"' "+
+                " WHERE " + LastFmMainData.UsersColumns.LOGIN + " = '" + contentValues.get(LastFmMainData.UsersColumns.LOGIN) + "' ;";
 
         try{
-            getWritableDatabase().execSQL(sql);
+            getWritableDatabase().execSQL(sql1);
+            Log.i(LOG_TAG, "11");
+            getWritableDatabase().execSQL(sql2);
+            Log.i(LOG_TAG, "22");
         }
         catch( 	android.database.sqlite.SQLiteException exception)
         {
