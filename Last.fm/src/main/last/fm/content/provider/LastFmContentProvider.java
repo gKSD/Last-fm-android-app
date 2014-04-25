@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Path;
 import android.net.Uri;
+import android.util.Log;
 
 /**
  * Created by sofia on 17.04.14.
@@ -25,9 +26,12 @@ public class LastFmContentProvider extends ContentProvider {
     public static final int USERS = 100;
 
     public LastFmContentProvider()
-    {}
+    {
+        Log.i(LOG_TAG, "##****************************************************");
+    }
 
     private static UriMatcher buildUriMatcher() {
+        Log.i(LOG_TAG, "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
         final String authority = LastFmMainData.CONTENT_AUTHORITY;
 
@@ -38,6 +42,7 @@ public class LastFmContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
+        Log.i(LOG_TAG, "#############################################33333");
         final Context context = getContext();
         databaseHelper = new LastFmDatabaseHelper(context);
         return true;
@@ -45,6 +50,7 @@ public class LastFmContentProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        Log.i(LOG_TAG, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         db = databaseHelper.getWritableDatabase();
         /*Cursor cursor = db.query(STUDENT_TABLE, projection, selection,selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), CONTACT_CONTENT_URI);

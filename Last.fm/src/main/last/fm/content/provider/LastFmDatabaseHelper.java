@@ -16,7 +16,6 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "last_fm.db";
     private static final int DATABASE_VERSION = 1;
 
-    private Integer version;
 
     private static final String SQL_CREATE_USERS= "CREATE TABLE " + LastFmMainData.PATH_USERS + " (" +
             LastFmMainData.UsersColumns.USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -26,16 +25,14 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
 
     public LastFmDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.version = 1;
+        //onCreate(getWritableDatabase());
     }
 
-    @Override
+
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         try{
-            Log.i(LOG_TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             sqLiteDatabase.execSQL(SQL_CREATE_USERS);
-            Log.i(LOG_TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
         catch( 	android.database.sqlite.SQLiteException exception)
         {
@@ -45,7 +42,7 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
-        Log.i(LOG_TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
         if (i < i2) // old version < new version
         {
             Log.d(LOG_TAG, "onUpgrade() from " + i + " to " + i2);
@@ -57,6 +54,7 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
 
     public long insertUser(String table, ContentValues contentValues)
     {
+
         String sql = "INSERT OR IGNORE INTO " + table + "VALUES (" + contentValues.get(LastFmMainData.UsersColumns.LOGIN) + "," + contentValues.get(LastFmMainData.UsersColumns.PASSWORD)
                 + "," + contentValues.get(LastFmMainData.UsersColumns.MOBILE_SESSION) +"); " +
                 "UPDATE " + table + " SET " + LastFmMainData.UsersColumns.MOBILE_SESSION + " = " + contentValues.get(LastFmMainData.UsersColumns.MOBILE_SESSION) +
