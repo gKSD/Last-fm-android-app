@@ -11,6 +11,9 @@ import main.last.fm.service.LastFmServiceHelper;
 import main.last.fm.R;
 
 public class LoginActivity extends Activity {
+
+    private static final String LOG_TAG = "LoginActivity";
+
     private LastFmServiceHelper lfServiceHelper;
     private int ACTIVITY_ID = 0;
 

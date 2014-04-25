@@ -25,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
  * Created by step on 17.04.14.
  */
 public class LastFmService extends IntentService {
+    private static final String LOG_TAG = "LastFmService";
     String REQUEST_URL = "https://ws.audioscrobbler.com/2.0/?method=";
     String API_K = "544aa2e6717625cc3fd72da91fcfa7df";
 
