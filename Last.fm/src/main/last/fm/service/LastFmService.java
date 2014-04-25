@@ -14,6 +14,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -43,18 +44,21 @@ public class LastFmService extends IntentService {
         int ID = intent.getIntExtra("id",0);
         String method = null;
         String urlParams = "";
+        String PostParams="";
+        boolean isPost;
       //  method = new String("auth.getMobileSession");
         switch (ID)
         {
             case 0:
-                urlParams = intent.getStringExtra("Auth");
-                method = new String("auth.getMobileSession");
+                method = new String("auth.getmobilesession");
+                PostParams = intent.getStringExtra("PostAuth");
+                isPost = true;
+
         }
         URL url = null;
-        Log.i("AUTH","AUTH");
         try {
-            url = new URL(REQUEST_URL+method+"&"+urlParams+"&format=json");
-            Log.i("AUTH",REQUEST_URL+method+"&"+urlParams+"&format=json");
+           // url = new URL(REQUEST_URL+method+"&"+urlParams+"&format=json");
+            url = new URL(REQUEST_URL+method +urlParams +"&format=json");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -72,10 +76,17 @@ public class LastFmService extends IntentService {
         } catch (ProtocolException e) {
             e.printStackTrace();
         }
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("charset", "utf-8");
-        connection.setRequestProperty("Content-Length", "" + Integer.toString(urlParams.getBytes().length));
-        connection.setUseCaches (false);
+
+        connection.setFixedLengthStreamingMode(
+                PostParams.getBytes().length);
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(connection.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        out.print(PostParams);
+        out.close();
         DataOutputStream wr = null;
         try {
             wr = new DataOutputStream(connection.getOutputStream());
@@ -90,11 +101,6 @@ public class LastFmService extends IntentService {
             response = connection.getInputStream();
             int bytesRead = -1;
             ByteArrayBuffer lastFmResponse = new ByteArrayBuffer(50);
-           /* byte[] buffer = new byte[1024];
-            while ((bytesRead = response.read(buffer)) >= 0) {
-                lastFmResponse.append(buffer, 0, bytesRead);
-            }*/
-
             /*  Более медленная, но зато в строку (Можно использовать StringBuilder, будет быстрее)
             */
             BufferedReader reader = new BufferedReader(new InputStreamReader(response));
