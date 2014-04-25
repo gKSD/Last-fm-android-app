@@ -2,9 +2,11 @@ package main.last.fm.content.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Path;
 import android.net.Uri;
 
 /**
@@ -12,24 +14,32 @@ import android.net.Uri;
  */
 public class LastFmContentProvider extends ContentProvider {
 
-    //private MainDatabaseHelper databaseHelper;
-    private static UriMatcher sUriMatcher;
-    public static final String AUTHORITY = "main.last.fm.content.provider";
+    private static final String LOG_TAG = "LastFmContentProvider";
 
-
+    private static UriMatcher sUriMatcher = buildUriMatcher();
     private LastFmDatabaseHelper databaseHelper;
     private SQLiteDatabase db;
 
-    LastFmContentProvider()
-    {
-        sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-        //sUriMatcher.addURI(AUTHORITY, "student", 1);
+    //Здесь мы храним id  для каждого отдельного uri
+    public static final int USERS = 100;
+
+    public LastFmContentProvider()
+    {}
+
+    private static UriMatcher buildUriMatcher() {
+        final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
+        final String authority = LastFmMainData.CONTENT_AUTHORITY;
+
+        matcher.addURI(authority, LastFmMainData.PATH_USERS, USERS);
+
+        return matcher;
     }
 
     @Override
     public boolean onCreate() {
-        databaseHelper = new LastFmDatabaseHelper(getContext());
+        final Context context = getContext();
+        databaseHelper = new LastFmDatabaseHelper(context);
         return true;
     }
 

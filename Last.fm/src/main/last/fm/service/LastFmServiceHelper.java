@@ -12,12 +12,13 @@ import java.security.NoSuchAlgorithmException;
  */
 public class LastFmServiceHelper{
 
+    private static final String LOG_TAG = "LastFmServiceHelper";
+
     //для формирования intenta
 
     boolean bound = false;
-    String inbytes = "544aa2e6717625cc3fd72da91fcfa7df";
-    String API_KEY = new String(inbytes);
-    String API_SIG;// = "609a04e369e81ab1759e13f7c2a64559";
+    String API_KEY = new String("544aa2e6717625cc3fd72da91fcfa7df");
+    String API_SIG = "609a04e369e81ab1759e13f7c2a64559";
     String SECRET_K = "609a04e369e81ab1759e13f7c2a64559";
     //String API_SIG;
 
