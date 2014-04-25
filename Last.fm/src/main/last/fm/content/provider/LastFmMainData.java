@@ -10,7 +10,7 @@ public class LastFmMainData {
 
     private static final String LOG_TAG = "LastFmMainData";
 
-    interface UsersColumns {
+    public interface UsersColumns {
         String USER_ID = "_id";
         String LOGIN = "login";
         String PASSWORD = "password";

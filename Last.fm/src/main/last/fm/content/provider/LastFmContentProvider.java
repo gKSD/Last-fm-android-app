@@ -44,7 +44,7 @@ public class LastFmContentProvider extends ContentProvider {
     }
 
     @Override
-    public Cursor query(Uri uri, String[] strings, String s, String[] strings2, String s2) {
+    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         db = databaseHelper.getWritableDatabase();
         /*Cursor cursor = db.query(STUDENT_TABLE, projection, selection,selectionArgs, null, null, sortOrder);
         cursor.setNotificationUri(getContext().getContentResolver(), CONTACT_CONTENT_URI);
@@ -52,16 +52,11 @@ public class LastFmContentProvider extends ContentProvider {
         return null;*/
         switch (sUriMatcher.match(uri))
         {
-            // If the incoming URI was for all of table3
-            case 1:
-                //id = databaseHelper.getWritableDatabase().insert(LastFmDatabaseHelper.STUDENT_TABLE, null, values);
-                break;
-            case 2:
-                //id = databaseHelper.getWritableDatabase().insert(LastFmDatabaseHelper.STUDENT_LIST_TABLE, null, values);
-                break;
 
+            case USERS:
+                return databaseHelper.getWritableDatabase().query(LastFmMainData.PATH_USERS, projection,selection, selectionArgs, null, null, sortOrder);
             default:
-                // If the URI is not recognized, you should do some error handling here.
+
         }
         return null;
     }
@@ -77,13 +72,10 @@ public class LastFmContentProvider extends ContentProvider {
         switch (sUriMatcher.match(uri))
         {
             // If the incoming URI was for all of table3
-            case 1:
+            case USERS:
                 //id = databaseHelper.getWritableDatabase().insert(LastFmDatabaseHelper.STUDENT_TABLE, null, values);
+                databaseHelper.insertUser(LastFmMainData.PATH_USERS, contentValues);
                 break;
-            case 2:
-                //id = databaseHelper.getWritableDatabase().insert(LastFmDatabaseHelper.STUDENT_LIST_TABLE, null, values);
-                break;
-
             default:
                 // If the URI is not recognized, you should do some error handling here.
         }

@@ -54,6 +54,7 @@ public class LastFmService extends IntentService {
                 method = new String("auth.getmobilesession");
                 PostParams = intent.getStringExtra("PostAuth");
                 isPost = true;
+            default:
 
         }
         URL url = null;

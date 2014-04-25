@@ -1,5 +1,6 @@
 package main.last.fm.content.provider;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -19,7 +20,7 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_USERS= "CREATE TABLE " + LastFmMainData.PATH_USERS + " (" +
             LastFmMainData.UsersColumns.USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            LastFmMainData.UsersColumns.LOGIN + " VARCHAR(200),"+
+            LastFmMainData.UsersColumns.LOGIN + " VARCHAR(200) UNIQUE,"+
             LastFmMainData.UsersColumns.PASSWORD + " VARCHAR(100),"+
             LastFmMainData.UsersColumns.MOBILE_SESSION + " VARCHAR(40))";
 
@@ -30,11 +31,21 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(SQL_CREATE_USERS);
+
+        try{
+            Log.i(LOG_TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            sqLiteDatabase.execSQL(SQL_CREATE_USERS);
+            Log.i(LOG_TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
+        catch( 	android.database.sqlite.SQLiteException exception)
+        {
+            Log.i(LOG_TAG, exception.getMessage());
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
+        Log.i(LOG_TAG, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         if (i < i2) // old version < new version
         {
             Log.d(LOG_TAG, "onUpgrade() from " + i + " to " + i2);
@@ -43,4 +54,26 @@ public class LastFmDatabaseHelper extends SQLiteOpenHelper {
 
         }
     }
+
+    public long insertUser(String table, ContentValues contentValues)
+    {
+        String sql = "INSERT OR IGNORE INTO " + table + "VALUES (" + contentValues.get(LastFmMainData.UsersColumns.LOGIN) + "," + contentValues.get(LastFmMainData.UsersColumns.PASSWORD)
+                + "," + contentValues.get(LastFmMainData.UsersColumns.MOBILE_SESSION) +"); " +
+                "UPDATE " + table + " SET " + LastFmMainData.UsersColumns.MOBILE_SESSION + " = " + contentValues.get(LastFmMainData.UsersColumns.MOBILE_SESSION) +
+                " WHERE " + LastFmMainData.UsersColumns.LOGIN + " = " + contentValues.get(LastFmMainData.UsersColumns.LOGIN) + ";";
+
+        try{
+            getWritableDatabase().execSQL(sql);
+        }
+        catch( 	android.database.sqlite.SQLiteException exception)
+        {
+            Log.i(LOG_TAG, exception.getMessage());
+        }
+        return 0;
+    }
+
+    //INSERT OR IGNORE INTO mytable VALUES ($id, 0);
+    //UPDATE mytable SET count = count + 1 WHERE id = $id;
+    /// ===
+    //insert ON DUPLICATE KEY UPDATE
 }

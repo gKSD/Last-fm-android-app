@@ -25,10 +25,11 @@
         </activity>
         <service android:enabled="true" android:name="main.last.fm.service.LastFmService" />
 
-        <provider android:authorities="com.example.dbpractice"
+        <provider android:authorities="main.last.fm.content.provider"
             android:name="main.last.fm.content.provider.LastFmContentProvider"
-            android:enabled="true"
-            ></provider>
+            android:enabled="true">
+        </provider>
+
     </application>
 
 </manifest>
