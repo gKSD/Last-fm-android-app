@@ -2,8 +2,10 @@ package main.last.fm.service;
 
 import android.app.IntentService;
 import android.app.Service;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
@@ -23,6 +25,7 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import main.last.fm.content.provider.LastFmMainData;
 import main.last.fm.processor.LoginProcessor;
 import main.last.fm.webservice.RestExecutor;
 
@@ -66,8 +69,19 @@ public class LastFmService extends IntentService {
         String response = new String(executor.exec(method, urlParams, PostParams));
         Log.i("tag","ggg");
         Log.i("tag","ggg");
-        Log.i("tag","ggg");
-        LoginProcessor processor = new LoginProcessor(response);
+        Log.i("tag",response);
+        switch(ID) {
+            case 0:
+                LoginProcessor processor = new LoginProcessor(response);
+                if (processor.getSessionKey() != null) {
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(LastFmMainData.UsersColumns.LOGIN, processor.getUniName());
+                    contentValues.put(LastFmMainData.UsersColumns.PASSWORD, "password");
+                    contentValues.put(LastFmMainData.UsersColumns.MOBILE_SESSION, processor.getSessionKey());
+                    getContentResolver().insert(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), contentValues);
+                }
+        }
+        //LoginProcessor processor = new LoginProcessor(response);
     }
 }
 
