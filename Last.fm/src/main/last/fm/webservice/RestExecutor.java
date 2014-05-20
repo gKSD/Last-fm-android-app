@@ -19,6 +19,7 @@ import java.net.URL;
  * Created by phil on 25.04.14.
  */
 public class RestExecutor {
+    private static final String LOG_TAG = "RestExecutor";
     public RestExecutor() {
 
     }
@@ -81,6 +82,7 @@ public class RestExecutor {
             e.printStackTrace();
         }
         connection.disconnect();
+        Log.i(LOG_TAG, serverResponseMessage);
         return serverResponseMessage;
     }
 }

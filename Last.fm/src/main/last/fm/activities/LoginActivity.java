@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import main.last.fm.content.provider.LastFmDatabaseHelper;
 import main.last.fm.content.provider.LastFmMainData;
 import main.last.fm.service.LastFmServiceHelper;
 import main.last.fm.R;
@@ -20,13 +19,22 @@ public class LoginActivity extends Activity {
 
     private static final String LOG_TAG = "LoginActivity";
 
-    private LastFmServiceHelper lfServiceHelper;
+    private LastFmServiceHelper lastFmServiceHelper;
     private int ACTIVITY_ID = 0;
+
+    public final LastFmServiceHelper getLastFmServiceHelper() {
+        return lastFmServiceHelper;
+    }
+
+    public final int getActivityId()
+    {
+        return ACTIVITY_ID;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.fragment_login);
 
         //******************************************************************************************************************************************************************************
         //пример запроса в бд
@@ -50,28 +58,50 @@ public class LoginActivity extends Activity {
         cursor = getContentResolver().query(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), projection, selection, selectionArgs, null);
         if (cursor != null) Log.i(LOG_TAG, " get cursor -- Ok "+ cursor.getColumnCount());
         else Log.i(LOG_TAG, "get cursor FAILED! " );
+
+        if (cursor.moveToFirst()) {
+            // определяем номера столбцов по имени в выборке
+            int loginColIndex = cursor.getColumnIndex(LastFmMainData.UsersColumns.LOGIN);
+            int pswdColIndex = cursor.getColumnIndex(LastFmMainData.UsersColumns.PASSWORD);
+            int mbSessionColIndex = cursor.getColumnIndex(LastFmMainData.UsersColumns.MOBILE_SESSION);
+
+            do {
+                // получаем значения по номерам столбцов и пишем все в лог
+                Log.d(LOG_TAG, "login = " + cursor.getInt(loginColIndex) + ", password = " + cursor.getString(pswdColIndex) + ", mobile session = " + cursor.getString(mbSessionColIndex));
+                // переход на следующую строку
+                // а если следующей нет (текущая - последняя), то false - выходим из цикла
+            } while (cursor.moveToNext());
+        } else
+            Log.d(LOG_TAG, "0 rows");
+        cursor.close();
         //******************************************************************************************************************************************************************************
 
-        final LoginActivity ptr = this;
+
+        lastFmServiceHelper = LastFmServiceHelper.getInstance();
+        final LoginActivity ptr = (LoginActivity) this;
+
 
         Button comeInBtn = (Button)findViewById(R.id.button);
-        lfServiceHelper = LastFmServiceHelper.getInstance();
+
         comeInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText loginEdt = (EditText) findViewById(R.id.editText1);
-                EditText passwdEdt = (EditText) findViewById(R.id.editText2);
+                Log.i(LOG_TAG, "111111111111111111111111111111111111111111111111111111111111111");
+                EditText loginEdt = (EditText) ptr.findViewById(R.id.editText1);
+                EditText passwdEdt = (EditText) ptr.findViewById(R.id.editText2);
                 String login = loginEdt.getText().toString();
                 String passwd = passwdEdt.getText().toString();
-                lfServiceHelper.authIntent(ptr, login, passwd, ACTIVITY_ID);
+                ptr.getLastFmServiceHelper().authIntent(ptr, login, passwd, ACTIVITY_ID);
             }
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.login, menu);
-        return true;
+        //getMenuInflater().inflate(R.menu.login, menu);
+        //return true;
+        Log.d(LOG_TAG, "onCreateOptionsMenu() ia called");
+        return false;
     }
     
 }
