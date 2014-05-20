@@ -23,6 +23,7 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import main.last.fm.processor.LoginProcessor;
 import main.last.fm.webservice.RestExecutor;
 
 /**
@@ -62,8 +63,11 @@ public class LastFmService extends IntentService {
                 PostParams = intent.getStringExtra("PostAuth");
                 isPost = true;
         }
-        String response = executor.exec(method, urlParams, PostParams);
-
+        String response = new String(executor.exec(method, urlParams, PostParams));
+        Log.i("tag","ggg");
+        Log.i("tag","ggg");
+        Log.i("tag","ggg");
+        LoginProcessor processor = new LoginProcessor(response);
     }
 }
 
