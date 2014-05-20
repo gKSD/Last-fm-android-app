@@ -50,6 +50,22 @@ public class LoginActivity extends Activity {
         cursor = getContentResolver().query(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), projection, selection, selectionArgs, null);
         if (cursor != null) Log.i(LOG_TAG, " get cursor -- Ok "+ cursor.getColumnCount());
         else Log.i(LOG_TAG, "get cursor FAILED! " );
+
+        if (cursor.moveToFirst()) {
+            // определяем номера столбцов по имени в выборке
+            int loginColIndex = cursor.getColumnIndex(LastFmMainData.UsersColumns.LOGIN);
+            int pswdColIndex = cursor.getColumnIndex(LastFmMainData.UsersColumns.PASSWORD);
+            int mbSessionColIndex = cursor.getColumnIndex(LastFmMainData.UsersColumns.MOBILE_SESSION);
+
+            do {
+                // получаем значения по номерам столбцов и пишем все в лог
+                Log.d(LOG_TAG, "login = " + cursor.getInt(loginColIndex) + ", password = " + cursor.getString(pswdColIndex) + ", mobile session = " + cursor.getString(mbSessionColIndex));
+                // переход на следующую строку
+                // а если следующей нет (текущая - последняя), то false - выходим из цикла
+            } while (cursor.moveToNext());
+        } else
+            Log.d(LOG_TAG, "0 rows");
+        cursor.close();
         //******************************************************************************************************************************************************************************
 
         final LoginActivity ptr = this;
@@ -70,8 +86,9 @@ public class LoginActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.login, menu);
-        return true;
+        //getMenuInflater().inflate(R.menu.login, menu);
+        //return true;
+        return false;
     }
     
 }

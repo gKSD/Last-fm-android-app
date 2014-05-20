@@ -88,6 +88,16 @@ public class LastFmContentProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String s, String[] strings) {
+        Long id;
+        switch (sUriMatcher.match(uri))
+        {
+            // If the incoming URI was for all of table3
+            case USERS:
+                databaseHelper.getWritableDatabase().delete(LastFmMainData.PATH_USERS, null, null);
+                break;
+            default:
+                // If the URI is not recognized, you should do some error handling here.
+        }
         return 0;
     }
 
