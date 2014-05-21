@@ -41,7 +41,6 @@ public class LastFmServiceHelper{
         intent.putExtra("Auth",strAuth);
         intent.putExtra("PostAuth",strAuth);
         intent.putExtra("id", ActivityNumber);
-
         context.startService(intent);
     }
 

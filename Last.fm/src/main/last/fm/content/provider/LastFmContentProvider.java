@@ -25,8 +25,7 @@ public class LastFmContentProvider extends ContentProvider {
     //Здесь мы храним id  для каждого отдельного uri
     public static final int USERS = 100;
 
-    public LastFmContentProvider()
-    {
+    public LastFmContentProvider() {
     }
 
     private static UriMatcher buildUriMatcher() {
