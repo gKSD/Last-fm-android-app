@@ -39,11 +39,6 @@ public class LastFmServiceHelper{
     {
         API_SIG = generateApiSig("auth.getmobilesession",passwd,login);
         String strAuth = "password="+passwd+"&username="+ login+"&api_key="+API_KEY+"&api_sig="+API_SIG;
-        if (receiver != null) {
-            Log.i(LOG_TAG,"!!!!!!!!!!!!!!!!!");
-            receiver.send(0, Bundle.EMPTY);
-            Log.i(LOG_TAG,"!!!!!!!!!!!!!!!!!&&&&&&&&&&&&&&");
-        }
         final Intent intent = new Intent(context, LastFmService.class);
 
         intent.putExtra("Auth",strAuth);
