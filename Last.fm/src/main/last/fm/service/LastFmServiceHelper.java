@@ -69,6 +69,16 @@ public class LastFmServiceHelper{
         context.startService(intent);
     }
 
+    public void getConcreteMusic(Context context, String title, int ActivityNumber, ServiceResultReceiver receiver)
+    {
+
+    }
+
+    public void getConcreteRelease(Context context, String title, int ActivityNumber, ServiceResultReceiver receiver)
+    {
+
+    }
+
     public String generateApiSig(String methods) {
 
         Log.i("MD5","api_key" + this.API_KEY + methods + SECRET_K);

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import main.last.fm.R;
 import main.last.fm.service.LastFmServiceHelper;
@@ -101,7 +102,12 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
         relativeLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(ptr, ConcreteMusicActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("title", ((TextView) ptr.findViewById(R.id.recomName1)).getText().toString());
+                startActivity(intent);
+                finish();
+                //ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
             }
         });
 
@@ -109,6 +115,9 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
         relativeLayout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                TextView textView = (TextView) ptr.findViewById(R.id.recomName2);
+                ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
 
             }
         });
@@ -118,6 +127,9 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
             @Override
             public void onClick(View view) {
 
+                TextView textView = (TextView) ptr.findViewById(R.id.recomName3);
+                ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
+
             }
         });
 
@@ -125,6 +137,9 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
         relativeLayout4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                TextView textView = (TextView) ptr.findViewById(R.id.recomName4);
+                ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
 
             }
         });
