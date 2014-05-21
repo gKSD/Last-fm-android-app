@@ -2,7 +2,9 @@ package main.last.fm.service;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.ResultReceiver;
+import android.util.Log;
 
 /**
  * Created by step on 17.04.14.
@@ -17,6 +19,7 @@ public class LastFmService extends IntentService {
     public static final int SERVICE_STATUS_OK = 0;
     public static final int SERVICE_STATUS_ERROR = 1;
     public static final int SERVICE_STATUS_PROCESSING = 2;
+    public static final int SERVICE_STATUS_FINISHED = 3;
 
     public static final String INTENT_SERVICE_EXTRA_STATUS_RECEIVER = "main.last.fm.RESULT_RECEIVER";
 
@@ -48,6 +51,34 @@ public class LastFmService extends IntentService {
         }
         //LoginProcessor processor = new LoginProcessor(response);
 
+
+        //PHIL!!!!!!!!!!!!
+        //смотри сюда))
+
+        if (receiver != null) {
+            receiver.send(SERVICE_STATUS_PROCESSING, Bundle.EMPTY);
+        }
+
+        final long startREST = System.currentTimeMillis();
+
+        try {
+            //ВСТАВЬ СЮДА ОБРАЩЕНИЕ К CONTENT PROVIDER
+            final long stopREST = System.currentTimeMillis();
+
+        } catch (Exception e) {
+
+            if (receiver != null) {
+                //ПРИМЕР
+                Bundle bundle = new Bundle();
+                bundle.putString(Intent.EXTRA_TEXT, e.toString());
+                receiver.send(SERVICE_STATUS_ERROR, bundle);
+                return;
+            }
+        }
+
+        if (receiver != null) {
+            receiver.send(SERVICE_STATUS_FINISHED, Bundle.EMPTY);
+        }
 
     }
 }
