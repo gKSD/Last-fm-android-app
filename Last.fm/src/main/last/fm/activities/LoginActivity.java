@@ -28,6 +28,8 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
     private LastFmServiceHelper lastFmServiceHelper;
     private final int ACTIVITY_ID = 0;
 
+    public static String SESSION_KEY = "";
+
     private ProgressDialog progressDialog;
 
     private ServiceResultReceiver resultReceiver;
@@ -130,6 +132,7 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
         {
             case LastFmService.SERVICE_STATUS_OK:
                 //progressDialog.dismiss();
+                SESSION_KEY = resultData.getString("sk");
                 Intent intent = new Intent(this, MainScreenActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
