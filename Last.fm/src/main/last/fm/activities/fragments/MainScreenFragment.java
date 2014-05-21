@@ -15,7 +15,9 @@ import android.widget.RelativeLayout;
 
 import main.last.fm.R;
 import main.last.fm.activities.MainScreenActivity;
+import main.last.fm.activities.MoreNewReleasesActivity;
 import main.last.fm.activities.MoreRecommendedGroupActivity;
+import main.last.fm.activities.MoreUpcomingEventsActivity;
 import main.last.fm.service.ServiceResultReceiver;
 
 /**
@@ -55,8 +57,14 @@ public class MainScreenFragment extends Fragment  implements ServiceResultReceiv
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+
                 // TODO Auto-generated method stub
                 //startActivity(new Intent(MainActivity.this, ActivityOk.class));
+                Intent intent = new Intent(getActivity(), MoreNewReleasesActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+                //TODO ЗАМЕНИТЬ НА ОСТАНОВКУ ГЛАВНОЙ СТРАНИЦЫ, А НЕ ВЫЗОВ FINISH() !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
             }
         });
 
@@ -66,7 +74,11 @@ public class MainScreenFragment extends Fragment  implements ServiceResultReceiv
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
-
+                Intent intent = new Intent(getActivity(), MoreUpcomingEventsActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                getActivity().finish();
+                //TODO ЗАМЕНИТЬ НА ОСТАНОВКУ ГЛАВНОЙ СТРАНИЦЫ, А НЕ ВЫЗОВ FINISH() !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
         });
 
