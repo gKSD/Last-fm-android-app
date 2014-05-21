@@ -1,7 +1,9 @@
 package main.last.fm.activities;
 
 import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +27,8 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
 
     private LastFmServiceHelper lastFmServiceHelper;
     private final int ACTIVITY_ID = 0;
+
+    private ProgressDialog progressDialog;
 
     private ServiceResultReceiver resultReceiver;
 
@@ -117,14 +121,21 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
 
+        resultCode = LastFmService.SERVICE_STATUS_OK;
+
         switch (resultCode)
         {
             case LastFmService.SERVICE_STATUS_OK:
-
+                //progressDialog.dismiss();
+                Intent intent = new Intent(this, MainScreenActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
                 break;
             case LastFmService.SERVICE_STATUS_ERROR:
                 break;
             case LastFmService.SERVICE_STATUS_PROCESSING:
+                //progressDialog = ProgressDialog.show(this,"", getString(R.string.progress_login_message), true);
                 break;
         }
 

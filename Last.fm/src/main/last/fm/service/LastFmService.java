@@ -19,7 +19,6 @@ public class LastFmService extends IntentService {
     public static final int SERVICE_STATUS_OK = 0;
     public static final int SERVICE_STATUS_ERROR = 1;
     public static final int SERVICE_STATUS_PROCESSING = 2;
-    public static final int SERVICE_STATUS_FINISHED = 3;
 
     public static final String INTENT_SERVICE_EXTRA_STATUS_RECEIVER = "main.last.fm.RESULT_RECEIVER";
 
@@ -77,7 +76,7 @@ public class LastFmService extends IntentService {
         }
 
         if (receiver != null) {
-            receiver.send(SERVICE_STATUS_FINISHED, Bundle.EMPTY);
+            receiver.send(SERVICE_STATUS_OK, Bundle.EMPTY);
         }
 
     }
