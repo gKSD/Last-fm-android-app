@@ -49,6 +49,10 @@ public class LastFmServiceHelper{
         context.startService(intent);
     }
 
+    public void getRecomendedMusic(int page, int count) {
+        API_SIG = generateApiSig("auth.getmobilesession",,login);
+    }
+
     public String generateApiSig(String method, String psw, String username) {
 
         Log.i("MD5","api_key" + this.API_KEY + "method" + method + "password" + psw + "username" + username + SECRET_K);
