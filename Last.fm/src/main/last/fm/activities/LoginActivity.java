@@ -20,7 +20,7 @@ public class LoginActivity extends Activity {
     private static final String LOG_TAG = "LoginActivity";
 
     private LastFmServiceHelper lastFmServiceHelper;
-    private int ACTIVITY_ID = 0;
+    private final int ACTIVITY_ID = 0;
 
     public final LastFmServiceHelper getLastFmServiceHelper() {
         return lastFmServiceHelper;
@@ -34,7 +34,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_login);
+        setContentView(R.layout.activity_login);
 
         //******************************************************************************************************************************************************************************
         //пример запроса в бд
