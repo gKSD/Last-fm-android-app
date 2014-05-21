@@ -38,7 +38,7 @@ public class MainScreenFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        View view = inflater.inflate(R.layout.activity_login, container);
+        View view = inflater.inflate(R.layout.fragment_main_screen, null);
         ActionBar actionBar = getActivity().getActionBar();
         actionBar.hide();
         return view;
