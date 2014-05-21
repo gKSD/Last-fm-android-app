@@ -94,6 +94,9 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
 
         Button comeInBtn = (Button)findViewById(R.id.button);
 
+        resultReceiver = new ServiceResultReceiver(new Handler());
+        resultReceiver.setReceiver(this);
+
         comeInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +108,6 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
                 ptr.getLastFmServiceHelper().authIntent(ptr, login, passwd, ACTIVITY_ID, resultReceiver);
             }
         });
-
 
         ActionBar actionBar = getActionBar();
         actionBar.hide();
@@ -121,6 +123,7 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
 
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
+
         Log.i(LOG_TAG, "5555555555555555555555555555555555555555555555555555");
 
         resultCode = LastFmService.SERVICE_STATUS_OK;

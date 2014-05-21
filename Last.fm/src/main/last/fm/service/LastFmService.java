@@ -63,7 +63,7 @@ public class LastFmService extends IntentService {
 
         boolean isPost = false;
       //  method = new String("auth.getMobileSession");
-        int status;
+        int status=SERVICE_STATUS_ERROR;
         switch (ID)
         {
             case 0:
@@ -91,9 +91,8 @@ public class LastFmService extends IntentService {
         //смотри сюда))
 
         if (receiver != null) {
-            receiver.send(SERVICE_STATUS_PROCESSING, Bundle.EMPTY);
+            receiver.send(status, Bundle.EMPTY);
         }
-
     }
 }
 
