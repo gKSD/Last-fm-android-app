@@ -2,6 +2,7 @@ package main.last.fm.service;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import java.security.MessageDigest;
@@ -38,13 +39,13 @@ public class LastFmServiceHelper{
     {
         API_SIG = generateApiSig("auth.getmobilesession",passwd,login);
         String strAuth = "password="+passwd+"&username="+ login+"&api_key="+API_KEY+"&api_sig="+API_SIG;
-
         final Intent intent = new Intent(context, LastFmService.class);
 
         intent.putExtra("Auth",strAuth);
         intent.putExtra("PostAuth",strAuth);
         intent.putExtra("id", ActivityNumber);
         intent.putExtra (LastFmService.INTENT_SERVICE_EXTRA_STATUS_RECEIVER, receiver);
+
         context.startService(intent);
     }
 

@@ -3,16 +3,18 @@ package main.last.fm.activities.fragments;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import main.last.fm.R;
+import main.last.fm.service.ServiceResultReceiver;
 
 /**
  * Created by sofia on 20.05.14.
  */
-public class MainScreenFragment extends Fragment {
+public class MainScreenFragment extends Fragment  implements ServiceResultReceiver.Receiver{
 
     private static final String LOG_TAG = "MainScreenFragment";
 
@@ -21,6 +23,8 @@ public class MainScreenFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+
+
 
     }
 
@@ -39,5 +43,10 @@ public class MainScreenFragment extends Fragment {
         ActionBar actionBar = getActivity().getActionBar();
         actionBar.hide();
         return view;
+    }
+
+    @Override
+    public void onReceiveResult(int resultCode, Bundle resultData) {
+
     }
 }

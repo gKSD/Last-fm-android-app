@@ -1,7 +1,9 @@
 package main.last.fm.activities;
 
 import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +27,10 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
 
     private LastFmServiceHelper lastFmServiceHelper;
     private final int ACTIVITY_ID = 0;
+
+    public static String SESSION_KEY = "";
+
+    private ProgressDialog progressDialog;
 
     private ServiceResultReceiver resultReceiver;
 
@@ -82,10 +88,16 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
         cursor.close();
         //******************************************************************************************************************************************************************************
 
+        resultReceiver = new ServiceResultReceiver(new Handler());
+        resultReceiver.setReceiver(this);
+
         lastFmServiceHelper = LastFmServiceHelper.getInstance();
         final LoginActivity ptr = this;
 
         Button comeInBtn = (Button)findViewById(R.id.button);
+
+        resultReceiver = new ServiceResultReceiver(new Handler());
+        resultReceiver.setReceiver(this);
 
         comeInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,9 +110,6 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
                 ptr.getLastFmServiceHelper().authIntent(ptr, login, passwd, ACTIVITY_ID, resultReceiver);
             }
         });
-
-        resultReceiver = new ServiceResultReceiver(new Handler());
-        resultReceiver.setReceiver(this);
 
         ActionBar actionBar = getActionBar();
         actionBar.hide();
@@ -117,14 +126,22 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
 
+        Log.i(LOG_TAG, "5555555555555555555555555555555555555555555555555555");
+
         switch (resultCode)
         {
             case LastFmService.SERVICE_STATUS_OK:
-
+                //progressDialog.dismiss();
+                SESSION_KEY = resultData.getString("sk");
+                Intent intent = new Intent(this, MainScreenActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
                 break;
             case LastFmService.SERVICE_STATUS_ERROR:
                 break;
             case LastFmService.SERVICE_STATUS_PROCESSING:
+                //progressDialog = ProgressDialog.show(this,"", getString(R.string.progress_login_message), true);
                 break;
         }
 

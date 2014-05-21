@@ -25,8 +25,8 @@ public class ServiceResultReceiver extends ResultReceiver {
 
     }
 
-    public void setReceiver(Receiver receiver) {
-        receiver = receiver;
+    public void setReceiver(Receiver newReceiver) {
+        receiver = newReceiver;
     }
 
     @Override
