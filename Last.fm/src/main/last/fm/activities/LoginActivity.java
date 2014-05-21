@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -23,6 +24,8 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
 
     private LastFmServiceHelper lastFmServiceHelper;
     private final int ACTIVITY_ID = 0;
+
+    private ServiceResultReceiver resultReceiver;
 
     public final LastFmServiceHelper getLastFmServiceHelper() {
         return lastFmServiceHelper;
@@ -93,9 +96,12 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
                 EditText passwdEdt = (EditText) ptr.findViewById(R.id.editText2);
                 String login = loginEdt.getText().toString();
                 String passwd = passwdEdt.getText().toString();
-                ptr.getLastFmServiceHelper().authIntent(ptr, login, passwd, ACTIVITY_ID);
+                ptr.getLastFmServiceHelper().authIntent(ptr, login, passwd, ACTIVITY_ID, resultReceiver);
             }
         });
+
+        resultReceiver = new ServiceResultReceiver(new Handler());
+        resultReceiver.setReceiver(this);
     }
 
     @Override
@@ -112,6 +118,7 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
         switch (resultCode)
         {
             case LastFmService.SERVICE_STATUS_OK:
+
                 break;
             case LastFmService.SERVICE_STATUS_ERROR:
                 break;
