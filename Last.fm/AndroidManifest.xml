@@ -31,6 +31,41 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activities.MoreRecommendedGroupActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.MoreNewReleasesActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.MoreUpcomingEventsActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.ArtistActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+
         <service android:enabled="true" android:name="main.last.fm.service.LastFmService" />
 
         <provider android:authorities="main.last.fm.content.provider"
