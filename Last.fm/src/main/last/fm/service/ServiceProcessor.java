@@ -24,7 +24,7 @@ public class ServiceProcessor {
         executor = new RestExecutor();
     }
 
-   int ProcessLogin(Context context, String PostParams, Bundle bundle) throws JSONException {
+   int ProcessLogin(Context context, String PostParams, Bundle bundle) throws Exception {
 
        String method = new String("auth.getmobilesession");
        String response = new String(executor.exec(method, "", PostParams, true));
@@ -48,7 +48,7 @@ public class ServiceProcessor {
 
     }
 
-    public int ProcessGetRecommendedMusic(Context context, String urlParams, Bundle bundle) throws JSONException {
+    public int ProcessGetRecommendedMusic(Context context, String urlParams, Bundle bundle) throws Exception {
         String method = new String("user.getRecommendedArtists");
         String response = new String(executor.exec(method, urlParams, "", false));
 

@@ -74,6 +74,8 @@ public class LastFmService extends IntentService {
                     status = serviceProcessor.ProcessLogin(getBaseContext(), PostParams, bundle);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 break;
             case 1:
@@ -81,6 +83,8 @@ public class LastFmService extends IntentService {
                 try {
                     status = serviceProcessor.ProcessGetRecommendedMusic(getBaseContext(), urlParams, bundle);
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
