@@ -12,10 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import main.last.fm.content.provider.LastFmMainData;
+import main.last.fm.service.LastFmService;
 import main.last.fm.service.LastFmServiceHelper;
 import main.last.fm.R;
+import main.last.fm.service.ServiceResultReceiver;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements ServiceResultReceiver.Receiver{
 
     private static final String LOG_TAG = "LoginActivity";
 
@@ -103,5 +105,19 @@ public class LoginActivity extends Activity {
         Log.d(LOG_TAG, "onCreateOptionsMenu() ia called");
         return false;
     }
-    
+
+    @Override
+    public void onReceiveResult(int resultCode, Bundle resultData) {
+
+        switch (resultCode)
+        {
+            case LastFmService.SERVICE_STATUS_OK:
+                break;
+            case LastFmService.SERVICE_STATUS_ERROR:
+                break;
+            case LastFmService.SERVICE_STATUS_PROCESSING:
+                break;
+        }
+
+    }
 }

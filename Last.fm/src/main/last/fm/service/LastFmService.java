@@ -33,11 +33,19 @@ import main.last.fm.webservice.RestExecutor;
  * Created by step on 17.04.14.
  */
 public class LastFmService extends IntentService {
+
     private static final String LOG_TAG = "LastFmService";
+
     RestExecutor executor;
+
     String REQUEST_URL = "https://ws.audioscrobbler.com/2.0/?method=";
     String API_K = "544aa2e6717625cc3fd72da91fcfa7df";
 
+    public static final int SERVICE_STATUS_OK = 0;
+    public static final int SERVICE_STATUS_ERROR = 1;
+    public static final int SERVICE_STATUS_PROCESSING = 2;
+
+    public static final String INTENT_SERVICE_EXTRA_STATUS_RECEIVER = "main.last.fm.RESULT_RECEIVER";
 
     public LastFmService () {
         super("LastFmService");
