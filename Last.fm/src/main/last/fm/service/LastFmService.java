@@ -111,7 +111,6 @@ public class LastFmService extends IntentService {
             }
         }
 
-
     }
 }
 
