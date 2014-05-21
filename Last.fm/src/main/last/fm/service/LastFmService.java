@@ -61,6 +61,8 @@ public class LastFmService extends IntentService {
         String urlParams = "";
         String PostParams="";
 
+        Bundle bundle = new Bundle();
+
         boolean isPost = false;
       //  method = new String("auth.getMobileSession");
         int status=SERVICE_STATUS_ERROR;
@@ -69,7 +71,7 @@ public class LastFmService extends IntentService {
             case 0:
                 PostParams = intent.getStringExtra("PostAuth");
                 try {
-                    status = serviceProcessor.ProcessLogin(getBaseContext(),PostParams);
+                    status = serviceProcessor.ProcessLogin(getBaseContext(), PostParams, bundle);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
