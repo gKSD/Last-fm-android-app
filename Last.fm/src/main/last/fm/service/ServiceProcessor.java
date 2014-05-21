@@ -48,5 +48,9 @@ public class ServiceProcessor {
 
     }
 
+    public int ProcessGetRecommendedMusic(Context context, String urlParams, Bundle bundle) {
+        String method = new String("");
+        return 0;
+    }
 }
 

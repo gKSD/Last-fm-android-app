@@ -75,6 +75,9 @@ public class LastFmService extends IntentService {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            case 1:
+                urlParams = intent.getStringExtra("GetParams");
+               
         }
       //  Log.i(LOG_TAG,response);
        /* switch(ID) {

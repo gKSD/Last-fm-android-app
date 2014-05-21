@@ -8,6 +8,8 @@ import android.util.Log;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import main.last.fm.activities.LoginActivity;
+
 /**
  * Created by step on 17.04.14.
  */
@@ -37,7 +39,10 @@ public class LastFmServiceHelper{
 
     public void authIntent(Context context, String login, String passwd, int ActivityNumber, ServiceResultReceiver receiver)
     {
-        API_SIG = generateApiSig("auth.getmobilesession",passwd,login);
+
+        String method = "auth.getmobilesession";
+        String params = "method" + method + "password" + passwd + "username" + login;
+        API_SIG = generateApiSig(params);
         String strAuth = "password="+passwd+"&username="+ login+"&api_key="+API_KEY+"&api_sig="+API_SIG;
         final Intent intent = new Intent(context, LastFmService.class);
 
@@ -49,15 +54,24 @@ public class LastFmServiceHelper{
         context.startService(intent);
     }
 
-    public void getRecomendedMusic(int page, int count) {
-        API_SIG = generateApiSig("auth.getmobilesession",,login);
+    public void getRecomendedMusic(Context context, int page, int limit, int ActivityNumber, ServiceResultReceiver receiver) {
+        String method = "user.getRecommendedArtists";
+        String params = "method" + method + "limit" + limit + "page" + page + "sk" + LoginActivity.SESSION_KEY;
+        API_SIG = generateApiSig(params);
+        String url = "limit=" + limit + "&page" + page + "&sk" + LoginActivity.SESSION_KEY+"&api_key="+API_KEY+"&api_sig="+API_SIG;;
+        final Intent intent = new Intent(context, LastFmService.class);
+        intent.putExtra("getParams",url);
+        intent.putExtra("id", ActivityNumber);
+        intent.putExtra (LastFmService.INTENT_SERVICE_EXTRA_STATUS_RECEIVER, receiver);
+
+        context.startService(intent);
     }
 
-    public String generateApiSig(String method, String psw, String username) {
+    public String generateApiSig(String methods) {
 
-        Log.i("MD5","api_key" + this.API_KEY + "method" + method + "password" + psw + "username" + username + SECRET_K);
+        Log.i("MD5","api_key" + this.API_KEY + methods + SECRET_K);
 
-        return md5SumMaker.digest("api_key" + this.API_KEY + "method" + method + "password" + psw + "username" + username + SECRET_K, "MD5");
+        return md5SumMaker.digest("api_key" + this.API_KEY + methods + SECRET_K, "MD5");
     }
 
 }
