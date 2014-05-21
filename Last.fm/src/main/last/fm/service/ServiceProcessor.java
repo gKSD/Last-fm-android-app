@@ -48,5 +48,11 @@ public class ServiceProcessor {
 
     }
 
+    public int ProcessGetRecommendedMusic(Context context, String urlParams, Bundle bundle) {
+        String method = new String("user.getRecommendedArtists");
+        String response = new String(executor.exec(method, urlParams, ""));
+
+        return 0;
+    }
 }
 
