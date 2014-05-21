@@ -73,19 +73,8 @@ public class LastFmService extends IntentService {
                 PostParams = intent.getStringExtra("PostAuth");
                 sp.ProcessLogin(PostParams);
         }
-      //  Log.i(LOG_TAG,response);
-        switch(ID) {
-            case 0:
-        /*        LoginProcessor processor = new LoginProcessor(response);
-                if (processor.getSessionKey() != null) {
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put(LastFmMainData.UsersColumns.LOGIN, processor.getUniName());
-                    contentValues.put(LastFmMainData.UsersColumns.PASSWORD, "password");
-                    contentValues.put(LastFmMainData.UsersColumns.MOBILE_SESSION, processor.getSessionKey());
-                    getContentResolver().insert(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), contentValues);
-                }*/
-        }
         //LoginProcessor processor = new LoginProcessor(response);
+
 
     }
 }
