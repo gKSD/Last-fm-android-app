@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.ResultReceiver;
 import android.util.Log;
 
 import org.apache.http.util.ByteArrayBuffer;
@@ -34,11 +35,17 @@ import main.last.fm.webservice.RestExecutor;
  * Created by step on 17.04.14.
  */
 public class LastFmService extends IntentService {
+
     private static final String LOG_TAG = "LastFmService";
     String REQUEST_URL = "https://ws.audioscrobbler.com/2.0/?method=";
     String API_K = "544aa2e6717625cc3fd72da91fcfa7df";
     public ServiceProcessor sp = new ServiceProcessor();
 
+    public static final int SERVICE_STATUS_OK = 0;
+    public static final int SERVICE_STATUS_ERROR = 1;
+    public static final int SERVICE_STATUS_PROCESSING = 2;
+
+    public static final String INTENT_SERVICE_EXTRA_STATUS_RECEIVER = "main.last.fm.RESULT_RECEIVER";
 
     public LastFmService () {
         super("LastFmService");
@@ -54,6 +61,7 @@ public class LastFmService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         int ID = intent.getIntExtra("id",0);
+        ResultReceiver receiver =  intent.getParcelableExtra(INTENT_SERVICE_EXTRA_STATUS_RECEIVER);
         String urlParams = "";
         String PostParams="";
 
@@ -78,6 +86,7 @@ public class LastFmService extends IntentService {
                 }*/
         }
         //LoginProcessor processor = new LoginProcessor(response);
+
     }
 }
 

@@ -26,26 +26,32 @@ public class LastFmServiceHelper{
 
     }
 
-    private static class SingletonHolder {  //используем вложенный класс для того, чтобы синглтон остался "ленивым" и потокобезопасным
+    private static class SingletonHolder {
+        //используем вложенный класс для того, чтобы синглтон остался "ленивым" и потокобезопасным
         private static final LastFmServiceHelper INSTANCE = new LastFmServiceHelper();
     }
     public static LastFmServiceHelper getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
-    public void authIntent(Context context, String login, String passwd, int ActivityNumber)
+    public void authIntent(Context context, String login, String passwd, int ActivityNumber, ServiceResultReceiver receiver)
     {
         API_SIG = generateApiSig("auth.getmobilesession",passwd,login);
         String strAuth = "password="+passwd+"&username="+ login+"&api_key="+API_KEY+"&api_sig="+API_SIG;
+
         final Intent intent = new Intent(context, LastFmService.class);
+
         intent.putExtra("Auth",strAuth);
         intent.putExtra("PostAuth",strAuth);
         intent.putExtra("id", ActivityNumber);
+        intent.putExtra (LastFmService.INTENT_SERVICE_EXTRA_STATUS_RECEIVER, receiver);
         context.startService(intent);
     }
 
     public String generateApiSig(String method, String psw, String username) {
+
         Log.i("MD5","api_key" + this.API_KEY + "method" + method + "password" + psw + "username" + username + SECRET_K);
+
         return md5SumMaker.digest("api_key" + this.API_KEY + "method" + method + "password" + psw + "username" + username + SECRET_K, "MD5");
     }
 
