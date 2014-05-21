@@ -3,19 +3,38 @@ package main.last.fm.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import main.last.fm.R;
+import main.last.fm.service.LastFmServiceHelper;
+import main.last.fm.service.ServiceResultReceiver;
 
 /**
  * Created by step on 17.04.14.
  */
-public class MainScreenActivity extends BaseActivity {
+public class MainScreenActivity extends BaseActivity  implements ServiceResultReceiver.Receiver{
     private static final String LOG_TAG = "MainScreenActivity";
+
+    private LastFmServiceHelper lastFmServiceHelper;
+    private final int ACTIVITY_ID = 1;
+
+    private ServiceResultReceiver resultReceiver;
+
+    private int itemAmount = 4;
+
+    public final LastFmServiceHelper getLastFmServiceHelper() {
+        return lastFmServiceHelper;
+    }
+    public final int getActivityId()
+    {
+        return ACTIVITY_ID;
+    }
 
     @Override
     public  void  onCreate(Bundle savedInstanceState)
@@ -24,6 +43,23 @@ public class MainScreenActivity extends BaseActivity {
 
         Log.d(LOG_TAG, getIntent().getLongExtra("order_id", -1) + "");
         setContentView(R.layout.activity_main_screen);
+
+        resultReceiver = new ServiceResultReceiver(new Handler());
+        resultReceiver.setReceiver(this);
+
+        lastFmServiceHelper = LastFmServiceHelper.getInstance();
+
+        final MainScreenActivity ptr = this;
+
+        Button comeInBtn = (Button)findViewById(R.id.button);
+
+        comeInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(LOG_TAG, "123456");
+                ptr.getLastFmServiceHelper().getRecomendedMusic(ptr, 1, itemAmount, ACTIVITY_ID, resultReceiver);
+            }
+        });
 
         final MainScreenActivity ptr = this;
 
@@ -101,6 +137,12 @@ public class MainScreenActivity extends BaseActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public void onReceiveResult(int resultCode, Bundle resultData) {
+
     }
 
     /*@Override
