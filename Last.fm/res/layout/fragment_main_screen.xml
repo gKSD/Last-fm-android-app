@@ -47,16 +47,21 @@
         android:layout_width="match_parent"
         android:layout_height="179dp"
         android:orientation="horizontal">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/recomGroup1"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1">
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#000"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/recomGroup2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -64,7 +69,12 @@
             android:layout_marginLeft="2dp"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1" >
-        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#000"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -72,16 +82,17 @@
         android:layout_width="match_parent"
         android:layout_height="179dp"
         android:orientation="horizontal">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/recomGroup3"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1">
-        </LinearLayout>
+            
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/recomGroup4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -89,7 +100,7 @@
             android:layout_marginLeft="2dp"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1" >
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
@@ -133,16 +144,16 @@
         android:layout_width="match_parent"
         android:layout_height="179dp"
         android:orientation="horizontal">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/newRelGroup1"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1">
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/newRelGroup2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -150,7 +161,7 @@
             android:layout_marginLeft="2dp"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1" >
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
