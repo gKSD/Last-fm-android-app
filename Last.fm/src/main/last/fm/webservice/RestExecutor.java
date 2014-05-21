@@ -33,7 +33,6 @@ public class RestExecutor {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        Log.i(LOG_TAG, REQUEST_URL+method + urlParams +"&format=json");
         HttpURLConnection connection = null;
         try {
             connection = (HttpURLConnection)url.openConnection();
@@ -43,7 +42,7 @@ public class RestExecutor {
         connection.setDoOutput(true);
         connection.setDoInput(true);
         connection.setInstanceFollowRedirects(false);
-
+        if (isPOST) {
         try {
             connection.setRequestMethod("POST");
         } catch (ProtocolException e) {
@@ -60,6 +59,12 @@ public class RestExecutor {
         }
         out.print(PostParams);
         out.close();
+        } else {
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestProperty("charset", "utf-8");
+            connection.setRequestProperty("Content-Length", "" + Integer.toString(urlParams.getBytes().length));
+            connection.setUseCaches (false);
+        }
         DataOutputStream wr = null;
         try {
             wr = new DataOutputStream(connection.getOutputStream());
