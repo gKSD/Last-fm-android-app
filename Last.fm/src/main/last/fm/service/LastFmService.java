@@ -93,7 +93,7 @@ public class LastFmService extends IntentService {
         //смотри сюда))
 
         if (receiver != null) {
-            receiver.send(status, Bundle.EMPTY);
+            receiver.send(status, bundle);
         }
     }
 }

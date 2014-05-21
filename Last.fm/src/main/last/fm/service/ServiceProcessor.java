@@ -41,7 +41,7 @@ public class ServiceProcessor {
                     contentValues.put(LastFmMainData.UsersColumns.MOBILE_SESSION, processor.getSessionKey());
                     context.getContentResolver().insert(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), contentValues);
             }
-
+       bundle.putString("sk",processor.getSessionKey());
        Log.i(LOG_TAG, response);
 
        return status;
