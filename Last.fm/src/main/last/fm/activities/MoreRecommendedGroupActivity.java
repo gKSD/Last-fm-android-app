@@ -35,7 +35,7 @@ public class MoreRecommendedGroupActivity extends Activity implements ServiceRes
         resultReceiver = new ServiceResultReceiver(new Handler());
         resultReceiver.setReceiver(this);
         lastFmServiceHelper = LastFmServiceHelper.getInstance();
-        lastFmServiceHelper.getRecomendedMusic(this, ACTIVITY_ID, resultReceiver);
+        lastFmServiceHelper.getRecomendedMusic(this, 1, 8, ACTIVITY_ID, resultReceiver);
 
     }
 
