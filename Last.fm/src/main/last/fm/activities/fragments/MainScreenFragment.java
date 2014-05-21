@@ -10,8 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import main.last.fm.R;
+import main.last.fm.activities.MainScreenActivity;
+import main.last.fm.activities.MoreRecommendedGroupActivity;
 import main.last.fm.service.ServiceResultReceiver;
 
 /**
@@ -38,7 +42,12 @@ public class MainScreenFragment extends Fragment  implements ServiceResultReceiv
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
-                //startActivity(new Intent(MainActivity.this, ActivityOk.class));
+
+                Intent intent = new Intent(getActivity(), MoreRecommendedGroupActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                getActivity().finish();
+                //TODO ЗАМЕНИТЬ НА ОСТАНОВКУ ГЛАВНОЙ СТРАНИЦЫ, А НЕ ВЫЗОВ FINISH() !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
         });
 
@@ -52,16 +61,46 @@ public class MainScreenFragment extends Fragment  implements ServiceResultReceiv
         });
 
 
-        /*Button button3 = (Button)getActivity().findViewById(R.id.moreButton3);
+        Button button3 = (Button)getActivity().findViewById(R.id.moreButton3);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
 
             }
-        });*/
+        });
 
+        RelativeLayout relativeLayout1 = (RelativeLayout) getActivity().findViewById(R.id.recomGroup1);
+        relativeLayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
+
+        RelativeLayout relativeLayout2 = (RelativeLayout) getActivity().findViewById(R.id.recomGroup2);
+        relativeLayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        RelativeLayout relativeLayout3 = (RelativeLayout) getActivity().findViewById(R.id.recomGroup3);
+        relativeLayout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        RelativeLayout relativeLayout4 = (RelativeLayout) getActivity().findViewById(R.id.recomGroup4);
+        relativeLayout4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 
