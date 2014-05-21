@@ -92,12 +92,14 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
         resultReceiver.setReceiver(this);
 
         lastFmServiceHelper = LastFmServiceHelper.getInstance();
-        final LoginActivity ptr = this;
 
-        Button comeInBtn = (Button)findViewById(R.id.button);
 
         resultReceiver = new ServiceResultReceiver(new Handler());
         resultReceiver.setReceiver(this);
+
+        final LoginActivity ptr = this;
+
+        Button comeInBtn = (Button)findViewById(R.id.button);
 
         comeInBtn.setOnClickListener(new View.OnClickListener() {
             @Override

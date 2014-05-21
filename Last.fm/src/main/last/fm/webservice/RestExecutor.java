@@ -25,11 +25,11 @@ public class RestExecutor {
     }
     public static String REQUEST_URL = "https://ws.audioscrobbler.com/2.0/?method=";
 
-    public String exec(String method, String urlParams, String PostParams) {
+    public String exec(String method, String urlParams, String PostParams, boolean isPOST) {
         String serverResponseMessage = new String();
         URL url = null;
         try {
-            url = new URL(REQUEST_URL+method +urlParams +"&format=json");
+            url = new URL(REQUEST_URL+method + urlParams +"&format=json");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -42,7 +42,7 @@ public class RestExecutor {
         connection.setDoOutput(true);
         connection.setDoInput(true);
         connection.setInstanceFollowRedirects(false);
-
+        if (isPOST) {
         try {
             connection.setRequestMethod("POST");
         } catch (ProtocolException e) {
@@ -59,6 +59,12 @@ public class RestExecutor {
         }
         out.print(PostParams);
         out.close();
+        } else {
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestProperty("charset", "utf-8");
+            connection.setRequestProperty("Content-Length", "" + Integer.toString(urlParams.getBytes().length));
+            connection.setUseCaches (false);
+        }
         DataOutputStream wr = null;
         try {
             wr = new DataOutputStream(connection.getOutputStream());

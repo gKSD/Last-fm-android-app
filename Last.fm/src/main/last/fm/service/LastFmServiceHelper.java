@@ -17,6 +17,8 @@ public class LastFmServiceHelper{
 
     private static final String LOG_TAG = "LastFmServiceHelper";
 
+
+
     //для формирования intenta
 
     boolean bound = false;

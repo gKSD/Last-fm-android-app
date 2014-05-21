@@ -23,22 +23,16 @@ import main.last.fm.service.ServiceResultReceiver;
 /**
  * Created by sofia on 20.05.14.
  */
-public class MainScreenFragment extends Fragment  implements ServiceResultReceiver.Receiver{
+public class MainScreenFragment extends Fragment{
 
     private static final String LOG_TAG = "MainScreenFragment";
 
-    private ServiceResultReceiver resultReceiver;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-
-        resultReceiver = new ServiceResultReceiver(new Handler());
-        resultReceiver.setReceiver(this);
-
-
     }
 
     @Override
@@ -56,10 +50,5 @@ public class MainScreenFragment extends Fragment  implements ServiceResultReceiv
         ActionBar actionBar = getActivity().getActionBar();
         actionBar.hide();
         return view;
-    }
-
-    @Override
-    public void onReceiveResult(int resultCode, Bundle resultData) {
-
     }
 }
