@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="#262626">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_marginLeft="8dp"
+            android:layout_toLeftOf="@+id/moreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="@string/recomMusic"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:fontFamily="sans-serif-light"
+            android:layout_alignBottom="@+id/moreButton"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/moreButton">
+        </TextView>
+
+        <Button
+            android:id="@+id/moreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="MORE"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            android:fontFamily="sans"
+            android:layout_marginRight="8dp"
+            android:background="#D51007"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentBottom="false"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/recRow1"
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:orientation="horizontal"
+        android:background="#262626">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/recomGroup1"
+            android:src="@drawable/icon_lastfm"
+            android:focusable="false"
+            android:layout_weight="1"/>
+
+
+        <ImageView
+            android:id="@+id/recomGroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/icon_lastfm"
+            android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@id/recRow1"
+            android:layout_width="match_parent"
+            android:layout_height="181dp"
+            android:background="#262626">
+        <ImageView
+            android:layout_marginTop="2dp"
+            android:id="@+id/recomGroup3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/icon_lastfm"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_marginTop="2dp"
+            android:id="@+id/recomGroup4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/icon_lastfm"
+            android:layout_weight="1" />
+
+        </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="#262626">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_marginLeft="8dp"
+            android:layout_toLeftOf="@+id/moreButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="@string/newReleases"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:fontFamily="sans-serif-light"
+            android:layout_alignBottom="@+id/moreButton2"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/moreButton2">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/moreButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="MORE"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            android:fontFamily="sans"
+            android:layout_marginRight="8dp"
+            android:background="#D51007"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentBottom="false"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@id/recRow1"
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:background="#262626">
+        <ImageView
+            android:id="@+id/recomGroup3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/icon_lastfm"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/recomGroup4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:src="@drawable/icon_lastfm"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="#262626">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_marginLeft="8dp"
+            android:layout_toLeftOf="@+id/moreButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="@string/newReleases"
+            android:textColor="#fff"
+            android:textSize="18dp"
+            android:fontFamily="sans-serif-light"
+            android:layout_alignBottom="@+id/moreButton3"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/moreButton3">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/moreButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="MORE"
+            android:textColor="#fff"
+            android:textSize="12dp"
+            android:fontFamily="sans"
+            android:layout_marginRight="8dp"
+            android:background="#D51007"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentBottom="false"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+
+</LinearLayout>
