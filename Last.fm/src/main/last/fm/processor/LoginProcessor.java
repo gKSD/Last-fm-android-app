@@ -6,12 +6,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import main.last.fm.service.LastFmService;
+
 /**
  * Created by phil on 25.04.14.
  */
 public class LoginProcessor {
     private String uniName;
     private String sessionKey;
+    private String errorMessage;
+   public LoginProcessor() {
+
+   };
+
+
     public String getSessionKey() {
         return sessionKey;
     }
@@ -19,20 +27,24 @@ public class LoginProcessor {
     public String getUniName() {
         return uniName;
     }
-    public LoginProcessor(String response) {
+    public int LoginProcess(String response) throws JSONException {
         JSONObject uniObject = null;
-        JSONObject user;
+        JSONObject user = new JSONObject(response);
         Log.i("PROC",response);
         try {
-            user = new JSONObject(response);
             Log.i("PROC",response);
             uniObject = user.getJSONObject("session");
-            uniName = new String(uniObject.getString("name"));
-            sessionKey = new String(uniObject.getString("key"));
-            Log.i("PROC",uniName);
+            if (uniObject != null) {
+                uniName = new String(uniObject.getString("name"));
+                sessionKey = new String(uniObject.getString("key"));
+                return LastFmService.SERVICE_STATUS_OK;
+            }
         } catch (JSONException e) {
-            throw new RuntimeException(e);
+            errorMessage = new String(user.getString("message"));
+            //throw new RuntimeException(e);
+            //String  = user.getJSONObject("error");
+            return LastFmService.SERVICE_STATUS_ERROR;
         }
-
+        return LastFmService.SERVICE_STATUS_ERROR;
     }
 }

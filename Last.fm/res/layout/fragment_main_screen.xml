@@ -3,16 +3,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#262626">
 
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="#262626">
+        android:layout_height="54dp">
 
         <TextView
-            android:id="@+id/textView1"
             android:layout_marginLeft="8dp"
             android:layout_toLeftOf="@+id/moreButton"
             android:layout_width="wrap_content"
@@ -47,59 +46,69 @@
         android:id="@+id/recRow1"
         android:layout_width="match_parent"
         android:layout_height="179dp"
-        android:orientation="horizontal"
-        android:background="#262626">
-        <ImageView
+        android:orientation="horizontal">
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:id="@+id/recomGroup1"
-            android:src="@drawable/icon_lastfm"
-            android:focusable="false"
-            android:layout_weight="1"/>
+            android:background="@drawable/icon_lastfm"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#000"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
 
-
-        <ImageView
+        <RelativeLayout
             android:id="@+id/recomGroup2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_marginLeft="2dp"
-            android:src="@drawable/icon_lastfm"
-            android:layout_weight="1" />
-        </LinearLayout>
+            android:background="@drawable/icon_lastfm"
+            android:layout_weight="1" >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="#000"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+    </LinearLayout>
 
-        <LinearLayout
-            android:layout_below="@id/recRow1"
-            android:layout_width="match_parent"
-            android:layout_height="181dp"
-            android:background="#262626">
-        <ImageView
-            android:layout_marginTop="2dp"
-            android:id="@+id/recomGroup3"
+    <LinearLayout
+        android:id="@+id/recRow2"
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:orientation="horizontal">
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:src="@drawable/icon_lastfm"
-            android:layout_weight="1"/>
+            android:orientation="vertical"
+            android:id="@+id/recomGroup3"
+            android:background="@drawable/icon_lastfm"
+            android:layout_weight="1">
+            
+        </RelativeLayout>
 
-        <ImageView
-            android:layout_marginTop="2dp"
+        <RelativeLayout
             android:id="@+id/recomGroup4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_marginLeft="2dp"
-            android:src="@drawable/icon_lastfm"
-            android:layout_weight="1" />
-
-        </LinearLayout>
+            android:background="@drawable/icon_lastfm"
+            android:layout_weight="1" >
+        </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="#262626">
+        android:layout_height="54dp">
 
         <TextView
-            android:id="@+id/textView1"
             android:layout_marginLeft="8dp"
             android:layout_toLeftOf="@+id/moreButton2"
             android:layout_width="wrap_content"
@@ -132,35 +141,35 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_below="@id/recRow1"
         android:layout_width="match_parent"
         android:layout_height="179dp"
-        android:background="#262626">
-        <ImageView
-            android:id="@+id/recomGroup3"
+        android:orientation="horizontal">
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:src="@drawable/icon_lastfm"
-            android:layout_weight="1"/>
+            android:orientation="vertical"
+            android:id="@+id/newRelGroup1"
+            android:background="@drawable/icon_lastfm"
+            android:layout_weight="1">
+        </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/recomGroup4"
+        <RelativeLayout
+            android:id="@+id/newRelGroup2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_marginLeft="2dp"
-            android:src="@drawable/icon_lastfm"
-            android:layout_weight="1" />
+            android:background="@drawable/icon_lastfm"
+            android:layout_weight="1" >
+        </RelativeLayout>
     </LinearLayout>
 
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="#262626">
+        android:layout_height="54dp">
 
         <TextView
-            android:id="@+id/textView1"
             android:layout_marginLeft="8dp"
             android:layout_toLeftOf="@+id/moreButton3"
             android:layout_width="wrap_content"
