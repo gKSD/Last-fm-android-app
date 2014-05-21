@@ -1,5 +1,6 @@
 package main.last.fm.activities;
 
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
@@ -81,10 +82,8 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
         cursor.close();
         //******************************************************************************************************************************************************************************
 
-
         lastFmServiceHelper = LastFmServiceHelper.getInstance();
-        final LoginActivity ptr = (LoginActivity) this;
-
+        final LoginActivity ptr = this;
 
         Button comeInBtn = (Button)findViewById(R.id.button);
 
@@ -102,6 +101,9 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
 
         resultReceiver = new ServiceResultReceiver(new Handler());
         resultReceiver.setReceiver(this);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
     }
 
     @Override

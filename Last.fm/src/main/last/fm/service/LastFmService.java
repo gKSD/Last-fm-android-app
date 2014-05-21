@@ -1,13 +1,8 @@
 package main.last.fm.service;
 
 import android.app.IntentService;
-import android.app.Service;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Binder;
-import android.os.IBinder;
+import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.util.Log;
 
@@ -40,11 +35,12 @@ public class LastFmService extends IntentService {
     private static final String LOG_TAG = "LastFmService";
     String REQUEST_URL = "https://ws.audioscrobbler.com/2.0/?method=";
     String API_K = "544aa2e6717625cc3fd72da91fcfa7df";
-    public ServiceProcessor sp = new ServiceProcessor();
+    public ServiceProcessor serviceProcessor = new ServiceProcessor();
 
     public static final int SERVICE_STATUS_OK = 1;
     public static final int SERVICE_STATUS_ERROR = 0;
     public static final int SERVICE_STATUS_PROCESSING = 2;
+    public static final int SERVICE_STATUS_FINISHED = 3;
 
     public static final String INTENT_SERVICE_EXTRA_STATUS_RECEIVER = "main.last.fm.RESULT_RECEIVER";
 
@@ -74,7 +70,7 @@ public class LastFmService extends IntentService {
             case 0:
                 PostParams = intent.getStringExtra("PostAuth");
                 try {
-                    status = sp.ProcessLogin(getBaseContext(),PostParams);
+                    status = serviceProcessor.ProcessLogin(getBaseContext(),PostParams);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -91,6 +87,34 @@ public class LastFmService extends IntentService {
         */
         //LoginProcessor processor = new LoginProcessor(response);
 
+
+        //PHIL!!!!!!!!!!!!
+        //смотри сюда))
+
+        if (receiver != null) {
+            receiver.send(SERVICE_STATUS_PROCESSING, Bundle.EMPTY);
+        }
+
+        final long startREST = System.currentTimeMillis();
+
+        try {
+            //ВСТАВЬ СЮДА ОБРАЩЕНИЕ К CONTENT PROVIDER
+            final long stopREST = System.currentTimeMillis();
+
+        } catch (Exception e) {
+
+            if (receiver != null) {
+                //ПРИМЕР
+                Bundle bundle = new Bundle();
+                bundle.putString(Intent.EXTRA_TEXT, e.toString());
+                receiver.send(SERVICE_STATUS_ERROR, bundle);
+                return;
+            }
+        }
+
+        if (receiver != null) {
+            receiver.send(SERVICE_STATUS_FINISHED, Bundle.EMPTY);
+        }
 
     }
 }

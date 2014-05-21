@@ -12,4 +12,6 @@
 
     <string name="bind">Bind</string>
     <string name="unbind">Unbind</string>
+    <string name="recomMusic">Recommended Music</string>
+    <string name="newReleases">New Releases</string>
 </resources>
