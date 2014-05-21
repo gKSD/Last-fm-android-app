@@ -86,6 +86,9 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
         cursor.close();
         //******************************************************************************************************************************************************************************
 
+        resultReceiver = new ServiceResultReceiver(new Handler());
+        resultReceiver.setReceiver(this);
+
         lastFmServiceHelper = LastFmServiceHelper.getInstance();
         final LoginActivity ptr = this;
 
@@ -103,8 +106,6 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
             }
         });
 
-        resultReceiver = new ServiceResultReceiver(new Handler());
-        resultReceiver.setReceiver(this);
 
         ActionBar actionBar = getActionBar();
         actionBar.hide();
@@ -120,6 +121,7 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
 
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
+        Log.i(LOG_TAG, "5555555555555555555555555555555555555555555555555555");
 
         resultCode = LastFmService.SERVICE_STATUS_OK;
 

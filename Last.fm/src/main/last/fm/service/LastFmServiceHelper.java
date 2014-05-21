@@ -45,6 +45,11 @@ public class LastFmServiceHelper{
         intent.putExtra("PostAuth",strAuth);
         intent.putExtra("id", ActivityNumber);
         intent.putExtra (LastFmService.INTENT_SERVICE_EXTRA_STATUS_RECEIVER, receiver);
+        Log.i(LOG_TAG, "333333333333333333333333333333333333333333333333333333333");
+        receiver.send(22, null);
+        Log.i(LOG_TAG, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+
+
         context.startService(intent);
     }
 
