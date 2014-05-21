@@ -40,7 +40,6 @@ public class LastFmService extends IntentService {
     public static final int SERVICE_STATUS_OK = 1;
     public static final int SERVICE_STATUS_ERROR = 0;
     public static final int SERVICE_STATUS_PROCESSING = 2;
-    public static final int SERVICE_STATUS_FINISHED = 3;
 
     public static final String INTENT_SERVICE_EXTRA_STATUS_RECEIVER = "main.last.fm.RESULT_RECEIVER";
 
@@ -64,7 +63,7 @@ public class LastFmService extends IntentService {
 
         boolean isPost = false;
       //  method = new String("auth.getMobileSession");
-        int status;
+        int status=SERVICE_STATUS_ERROR;
         switch (ID)
         {
             case 0:
@@ -92,7 +91,7 @@ public class LastFmService extends IntentService {
         //смотри сюда))
 
         if (receiver != null) {
-            receiver.send(SERVICE_STATUS_PROCESSING, Bundle.EMPTY);
+            receiver.send(status, Bundle.EMPTY);
         }
 
         final long startREST = System.currentTimeMillis();
@@ -112,9 +111,6 @@ public class LastFmService extends IntentService {
             }
         }
 
-        if (receiver != null) {
-            receiver.send(SERVICE_STATUS_FINISHED, Bundle.EMPTY);
-        }
 
     }
 }
