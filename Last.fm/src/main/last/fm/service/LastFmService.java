@@ -96,20 +96,7 @@ public class LastFmService extends IntentService {
 
         final long startREST = System.currentTimeMillis();
 
-        try {
-            //ВСТАВЬ СЮДА ОБРАЩЕНИЕ К CONTENT PROVIDER
-            final long stopREST = System.currentTimeMillis();
 
-        } catch (Exception e) {
-
-            if (receiver != null) {
-                //ПРИМЕР
-                Bundle bundle = new Bundle();
-                bundle.putString(Intent.EXTRA_TEXT, e.toString());
-                receiver.send(SERVICE_STATUS_ERROR, bundle);
-                return;
-            }
-        }
 
     }
 }
