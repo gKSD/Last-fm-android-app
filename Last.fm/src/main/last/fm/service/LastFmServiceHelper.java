@@ -58,9 +58,9 @@ public class LastFmServiceHelper{
 
     public void getRecomendedMusic(Context context, int page, int limit, int ActivityNumber, ServiceResultReceiver receiver) {
         String method = "user.getRecommendedArtists";
-        String params = "method" + method + "limit" + limit + "page" + page + "sk" + LoginActivity.SESSION_KEY;
+        String params = "limit" + limit + "method" + method + "page" + page + "sk" + LoginActivity.SESSION_KEY;
         API_SIG = generateApiSig(params);
-        String url = "limit=" + limit + "&page" + page + "&sk" + LoginActivity.SESSION_KEY+"&api_key="+API_KEY+"&api_sig="+API_SIG;;
+        String url = "&limit=" + limit + "&page=" + page + "&sk=" + LoginActivity.SESSION_KEY+"&api_key="+API_KEY+"&api_sig="+API_SIG;;
         final Intent intent = new Intent(context, LastFmService.class);
         intent.putExtra("getParams",url);
         intent.putExtra("id", ActivityNumber);

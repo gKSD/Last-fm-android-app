@@ -79,7 +79,7 @@ public class LastFmService extends IntentService {
                 }
                 break;
             case 1:
-                urlParams = intent.getStringExtra("GetParams");
+                urlParams = intent.getStringExtra("getParams");
                 try {
                     status = serviceProcessor.ProcessGetRecommendedMusic(getBaseContext(), urlParams, bundle);
                 } catch (JSONException e) {

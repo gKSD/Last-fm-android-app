@@ -27,7 +27,7 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
 
     private ServiceResultReceiver resultReceiver;
 
-    private int itemAmount = 4;
+    private int itemAmount = 8;
 
     public final LastFmServiceHelper getLastFmServiceHelper() {
         return lastFmServiceHelper;
