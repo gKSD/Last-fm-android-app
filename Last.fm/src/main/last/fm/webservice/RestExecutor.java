@@ -25,14 +25,15 @@ public class RestExecutor {
     }
     public static String REQUEST_URL = "https://ws.audioscrobbler.com/2.0/?method=";
 
-    public String exec(String method, String urlParams, String PostParams) {
+    public String exec(String method, String urlParams, String PostParams, boolean isPOST) {
         String serverResponseMessage = new String();
         URL url = null;
         try {
-            url = new URL(REQUEST_URL+method +urlParams +"&format=json");
+            url = new URL(REQUEST_URL+method + urlParams +"&format=json");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        Log.i(LOG_TAG, REQUEST_URL+method + urlParams +"&format=json");
         HttpURLConnection connection = null;
         try {
             connection = (HttpURLConnection)url.openConnection();
