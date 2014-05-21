@@ -126,8 +126,6 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
 
         Log.i(LOG_TAG, "5555555555555555555555555555555555555555555555555555");
 
-        resultCode = LastFmService.SERVICE_STATUS_OK;
-
         switch (resultCode)
         {
             case LastFmService.SERVICE_STATUS_OK:
