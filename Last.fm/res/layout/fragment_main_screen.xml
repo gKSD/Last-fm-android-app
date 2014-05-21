@@ -75,7 +75,8 @@
                 android:text="asdasdasdfa"
                 android:textColor="#fff"
                 android:textSize="14dp"
-                android:fontFamily="sans-serif"/>
+                android:fontFamily="sans-serif"
+                android:drawablePadding="40dp"/>
             <TextView
                 android:id="@+id/recomSimilar1"
                 android:layout_width="match_parent"
@@ -341,7 +342,7 @@
             android:layout_centerVertical="true" />
     </RelativeLayout>
     <RelativeLayout
-        android:id="@+id/recomGroup2"
+        android:id="@+id/upcomGroup"
         android:layout_width="wrap_content"
         android:layout_height="128dp"
         android:orientation="vertical"
@@ -387,7 +388,7 @@
                 android:orientation="vertical"
                 android:layout_weight="20">
                 <TextView
-                    android:id="@+id/recomName2"
+                    android:id="@+id/upcomName2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="asdasdasdfa"
@@ -396,7 +397,7 @@
                     android:fontFamily="sans-serif"/>
 
                 <TextView
-                    android:id="@+id/recomSimilar2"
+                    android:id="@+id/upcomSimilar2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="asdasdasdfa"
