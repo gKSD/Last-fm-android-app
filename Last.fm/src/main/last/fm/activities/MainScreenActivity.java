@@ -49,17 +49,8 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
 
         lastFmServiceHelper = LastFmServiceHelper.getInstance();
 
-        final MainScreenActivity ptr = this;
-
-        Button comeInBtn = (Button)findViewById(R.id.button);
-
-        comeInBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(LOG_TAG, "123456");
-                ptr.getLastFmServiceHelper().getRecomendedMusic(ptr, 1, itemAmount, ACTIVITY_ID, resultReceiver);
-            }
-        });
+        Log.i(LOG_TAG, "123456");
+        lastFmServiceHelper.getRecomendedMusic(this, 1, itemAmount, ACTIVITY_ID, resultReceiver);
 
         final MainScreenActivity ptr = this;
 
