@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import main.last.fm.R;
 import main.last.fm.service.LastFmService;
 import main.last.fm.service.LastFmServiceHelper;
@@ -22,7 +24,7 @@ import main.last.fm.service.ServiceResultReceiver;
 /**
  * Created by step on 17.04.14.
  */
-public class MainScreenActivity extends main.last.fm.activities.BaseActivity implements ServiceResultReceiver.Receiver{
+public class MainScreenActivity extends BaseActivity implements ServiceResultReceiver.Receiver{
     private static final String LOG_TAG = "MainScreenActivity";
 
     private LastFmServiceHelper lastFmServiceHelper;
@@ -60,9 +62,9 @@ public class MainScreenActivity extends main.last.fm.activities.BaseActivity imp
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //УДАЛЮ ПОТОМ
-        Bundle resultData = new Bundle();
-        resultData.putInt("title", LastFmService.IS_MUSIC);
-        onReceiveResult(33, resultData);
+        //Bundle resultData = new Bundle();
+        //resultData.putInt("title", LastFmService.IS_MUSIC);
+        //onReceiveResult(33, resultData);
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -160,28 +162,31 @@ public class MainScreenActivity extends main.last.fm.activities.BaseActivity imp
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
 
+        Log.i(LOG_TAG, "QQQQQQQQQQQQ");
+
+        /*
         Log.i(LOG_TAG, "44444444444444444444444444444444444444444444444444444444444444444");
         RelativeLayout relativeLayout1 = (RelativeLayout) findViewById(R.id.recomGroup1);
         //relativeLayout1.setBackground(Drawable.createFromPath("@drawable/ic_launcher.png"));
         Resources res = getResources(); //resource handle
         Drawable drawable = res.getDrawable(R.drawable.ic_launcher); //new Image that was added to the res folder
         relativeLayout1.setBackground(drawable);
-
-
-        Log.i(LOG_TAG, "77777777777777777777777777777777777777777777777777777777777777777777");
+        Log.i(LOG_TAG, "77777777777777777777777777777777777777777777777777777777777777777777");*/
 
         if (resultData.getInt("init") >= 0) //!!!!!!
         {
+            Log.i(LOG_TAG, "TTTTTTT");
             int code = resultData.getInt("init");
 
-            //String[] titles = resultData.getStringArray("title");
-            //String[] imgSrc = resultData.getStringArray("img");
+            String[] titles = resultData.getStringArray("title");
+            String[] imgSrc = resultData.getStringArray("img");
+
+            Log.i(LOG_TAG, titles[0]);
 
 
-            //int n1 = titles.length;
-            //int n2 = imgSrc.length;
-            //int n = Math.min(n1, n2);
-
+            int n1 = titles.length;
+            int n2 = imgSrc.length;
+            int n = Math.min(n1, n2);
 
             switch(code)
             {
@@ -196,6 +201,12 @@ public class MainScreenActivity extends main.last.fm.activities.BaseActivity imp
                         TextView textView = (TextView) findViewById(R.id.recomName1);
                         textView.setText(titles[0]);
                     }*/
+
+                    //RelativeLayout relativeLayout1 = (RelativeLayout) findViewById(R.id.recomGroup1);
+                    //Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(relativeLayout1);
+
+                    TextView textView = (TextView) findViewById(R.id.recomName1);
+                    textView.setText(titles[0]);
 
                     break;
                 case LastFmService.IS_UPCOMING_EVENT:
