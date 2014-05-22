@@ -190,10 +190,14 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             Log.i(LOG_TAG, titles[1]);
             Log.i(LOG_TAG, titles[3]);
 
+            Log.i(LOG_TAG, img[0]);
+
 
             int n1 = titles.length;
             int n2 = img.length;
             int n = Math.min(n1, n2);
+
+            Log.i(LOG_TAG, "99999999999999999");
 
             switch(code)
             {
@@ -208,6 +212,7 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
                         TextView textView = (TextView) findViewById(R.id.recomName1);
                         textView.setText(titles[0]);
                     }*/
+                    Log.i(LOG_TAG, "8888888888888888");
 
                     ImageView imageView1 = (ImageView) findViewById(R.id.recomImg1);
                     Picasso.with(this).load(img[0]).into(imageView1);
