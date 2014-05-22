@@ -182,6 +182,8 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             String[] imgSrc = resultData.getStringArray("img");
 
             Log.i(LOG_TAG, titles[0]);
+            Log.i(LOG_TAG, titles[1]);
+            Log.i(LOG_TAG, titles[3]);
 
 
             int n1 = titles.length;
