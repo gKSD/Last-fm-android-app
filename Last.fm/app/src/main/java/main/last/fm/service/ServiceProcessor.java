@@ -58,11 +58,12 @@ public class ServiceProcessor {
         processor.ProcessRecomendedArtists(response, limit, artist, urls);
         Log.i(LOG_TAG, artist[0]);
         bundle.putStringArray("title", artist);
+        bundle.putStringArray("img", urls);
         return 0;
     }
 
     public int ProcessNewReleases(Context context, String urlParams, Bundle bundle) throws Exception {
-        
+        String method = new String("user.getNewReleases");
         return 0;
     }
 }

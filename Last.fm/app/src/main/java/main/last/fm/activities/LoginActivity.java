@@ -29,6 +29,7 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
     private final int ACTIVITY_ID = 0;
 
     public static String SESSION_KEY = "";
+    public static String USER_NAME = "";
 
     private ProgressDialog progressDialog;
 
