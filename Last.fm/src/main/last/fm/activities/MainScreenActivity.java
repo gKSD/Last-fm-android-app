@@ -174,13 +174,13 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
         {
             int code = resultData.getInt("init");
 
-            String[] titles = resultData.getStringArray("title");
-            String[] imgSrc = resultData.getStringArray("img");
+            //String[] titles = resultData.getStringArray("title");
+            //String[] imgSrc = resultData.getStringArray("img");
 
 
-            int n1 = titles.length;
-            int n2 = imgSrc.length;
-            int n = Math.min(n1, n2);
+            //int n1 = titles.length;
+            //int n2 = imgSrc.length;
+            //int n = Math.min(n1, n2);
 
 
             switch(code)
