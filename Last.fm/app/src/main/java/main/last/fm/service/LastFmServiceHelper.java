@@ -67,6 +67,11 @@ public class LastFmServiceHelper{
         context.startService(intent);
     }
 
+    public void  getNewReleases(Context context, int page, int limit, int ActivityNumber, ServiceResultReceiver receiver)
+    {
+
+    }
+
     public void getConcreteMusic(Context context, String title, int ActivityNumber, ServiceResultReceiver receiver)
     {
 
