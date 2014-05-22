@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -27,12 +28,9 @@ public class RecommendedGroupAdapter extends SimpleAdapter {    //см. http://w
 
     public RecommendedGroupAdapter(Context context, ArrayList<Map<String, String>>  data, int resource, String[] from, int[] to) {
         super(context, data, resource, from, to);
-        this.results = data;
-        this.context = context;
-        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    @Override
+    /*@Override
     public View getView(int position, View view, ViewGroup parent){
         View v = view;
         if (v == null) {
@@ -41,5 +39,18 @@ public class RecommendedGroupAdapter extends SimpleAdapter {    //см. http://w
         TextView tt = (TextView) v.findViewById(R.id.bandName);
         tt.setText(results.get(position).get("title"));
         return v;
+    } */
+
+    @Override
+    public void setViewText(TextView v, String text) {
+        // метод супер-класса, который вставляет текст
+        super.setViewText(v, text);
+    }
+
+    @Override
+    public void setViewImage(ImageView v, int value) {
+        // метод супер-класса
+        super.setViewImage(v, value);
+
     }
 }
