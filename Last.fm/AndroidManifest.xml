@@ -73,6 +73,12 @@
             android:enabled="true">
         </provider>
 
+        <dependency>
+            <groupId>com.squareup.picasso</groupId>
+            <artifactId>picasso</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
     </application>
 
 </manifest>
