@@ -70,7 +70,7 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
         Log.i(LOG_TAG, "123456");
         //lastFmServiceHelper.getRecomendedMusic(this, 1, itemAmount, ACTIVITY_ID, resultReceiver);
         lastFmServiceHelper.getRecomendedMusic(this, 1, itemAmount, ACTIVITY_ID, resultReceiver);
-        lastFmServiceHelper.getNewReleases(this, 1, itemAmount, 20, resultReceiver);
+        //lastFmServiceHelper.getNewReleases(this, 1, itemAmount, 20, resultReceiver);
 
         final MainScreenActivity ptr = this;
 
