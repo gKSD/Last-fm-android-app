@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import main.last.fm.R;
 import main.last.fm.adapters.RecommendedGroupAdapter;
@@ -21,6 +23,8 @@ public class MoreRecommendedGroupActivity extends ListActivity implements Servic
     //ListActivity
     private static final String LOG_TAG = "MoreRecommendedMusicActivity";
     private final int ACTIVITY_ID = 2;
+    final String ATTRIBUTE_NAME_TEXT = "title";
+    final String ATTRIBUTE_NAME_IMAGE = "image";
     private ServiceResultReceiver resultReceiver;
     private LastFmServiceHelper lastFmServiceHelper;
 
@@ -46,13 +50,30 @@ public class MoreRecommendedGroupActivity extends ListActivity implements Servic
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
         setContentView(R.layout.activity_more_recommended_group);
-        ListView check=(ListView)findViewById(android.R.id.list);
+        ListView recGroupFullList=(ListView)findViewById(android.R.id.list);
+        // массив данных
         String[] recomGroupsNames = resultData.getStringArray("title");
+        Log.i(LOG_TAG, recomGroupsNames[2]);
         String[] recomGroupImages = resultData.getStringArray("img");
-        ArrayList<String[]> checkArr = new ArrayList<String[]>();
-        checkArr.add(recomGroupsNames);
-        checkArr.add(recomGroupImages);
-        RecommendedGroupAdapter adapter = new RecommendedGroupAdapter(this, R.layout.activity_recommended_group_item, checkArr);
-        check.setAdapter(adapter);
+
+        ArrayList<Map<String, String>> summaryData = new ArrayList<Map<String, String>>(
+                recomGroupsNames.length);
+
+        Map<String, String> m;
+        int img = 0;
+        for (int i = 0; i < recomGroupsNames.length; i++) {
+            m = new HashMap<String, String>();
+            m.put(ATTRIBUTE_NAME_TEXT, recomGroupsNames[i]);
+            summaryData.add(m);
+        }
+
+        // массив имен атрибутов, из которых будут читаться данные
+        String[] from = { ATTRIBUTE_NAME_TEXT, ATTRIBUTE_NAME_IMAGE };
+        // массив ID View-компонентов, в которые будут вставлять данные
+        int[] to = { R.id.bandName, R.id.recomGroupItem };
+
+        // создаем адаптер
+        RecommendedGroupAdapter recGroupAdapter = new RecommendedGroupAdapter(this, summaryData, R.layout.activity_recommended_group_item, from, to);
+        recGroupFullList.setAdapter(recGroupAdapter);
     }
 }
