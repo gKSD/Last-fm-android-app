@@ -45,11 +45,21 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
     }
 
     @Override
-    public  void  onCreate(Bundle savedInstanceState)
-    {
+    public  void  onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Log.d(LOG_TAG, getIntent().getLongExtra("order_id", -1) + "");
+
+        //((ImageView) findViewById(R.id.recomImg1)).setMaxWidth();
+        //((ImageView) findViewById(R.id.recomImg2)).setMaxWidth();
+        //((ImageView) findViewById(R.id.recomImg3)).setMaxWidth();
+        //((ImageView) findViewById(R.id.recomImg4)).setMaxWidth();
+
+        //((ImageView) findViewById(R.id.newRelImg1)).setMaxWidth();
+        //((ImageView) findViewById(R.id.newRelImg2)).setMaxWidth();
+
+        //((ImageView) findViewById(R.id.upComImg1)).setMaxWidth();
+
         setContentView(R.layout.activity_main_screen);
 
         resultReceiver = new ServiceResultReceiver(new Handler());
@@ -58,8 +68,9 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
         lastFmServiceHelper = LastFmServiceHelper.getInstance();
 
         Log.i(LOG_TAG, "123456");
+        //lastFmServiceHelper.getRecomendedMusic(this, 1, itemAmount, ACTIVITY_ID, resultReceiver);
         lastFmServiceHelper.getRecomendedMusic(this, 1, itemAmount, ACTIVITY_ID, resultReceiver);
-        lastFmServiceHelper.getNewReleases(this, 1, itemAmount, ACTIVITY_ID, resultReceiver);
+        lastFmServiceHelper.getNewReleases(this, 1, itemAmount, 20, resultReceiver);
 
         final MainScreenActivity ptr = this;
 
@@ -71,8 +82,7 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-
-        Button button1 = (Button)findViewById(R.id.moreButton);
+        Button button1 = (Button) findViewById(R.id.moreButton);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -86,7 +96,7 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             }
         });
 
-        Button button2 = (Button)findViewById(R.id.moreButton2);
+        Button button2 = (Button) findViewById(R.id.moreButton2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -101,7 +111,7 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
         });
 
 
-        Button button3 = (Button)findViewById(R.id.moreButton3);
+        Button button3 = (Button) findViewById(R.id.moreButton3);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -161,6 +171,26 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
         });
 
         //
+        FrameLayout frameLayout5 = (FrameLayout) findViewById(R.id.newRel1);
+        frameLayout5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                TextView textView = (TextView) ptr.findViewById(R.id.newRelName1);
+                ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
+
+            }
+        });
+        FrameLayout frameLayout6 = (FrameLayout) findViewById(R.id.newRel2);
+        frameLayout6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                TextView textView = (TextView) ptr.findViewById(R.id.newRelName2);
+                ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
+
+            }
+        });
     }
 
 
@@ -219,6 +249,24 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
 
                     TextView textView = (TextView) findViewById(R.id.recomName1);
                     textView.setText(titles[0]);
+
+                    ImageView imageView2 = (ImageView) findViewById(R.id.recomImg2);
+                    Picasso.with(this).load(img[1]).into(imageView2);
+
+                    TextView textView2 = (TextView) findViewById(R.id.recomName2);
+                    textView2.setText(titles[1]);
+
+                    ImageView imageView3 = (ImageView) findViewById(R.id.recomImg3);
+                    Picasso.with(this).load(img[1]).into(imageView3);
+
+                    TextView textView3 = (TextView) findViewById(R.id.recomName3);
+                    textView3.setText(titles[1]);
+
+                    ImageView imageView4 = (ImageView) findViewById(R.id.recomImg4);
+                    Picasso.with(this).load(img[1]).into(imageView4);
+
+                    TextView textView4 = (TextView) findViewById(R.id.recomName4);
+                    textView4.setText(titles[1]);
 
                     break;
                 case LastFmService.IS_UPCOMING_EVENT:
