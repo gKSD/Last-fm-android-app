@@ -53,11 +53,7 @@ public class MoreRecommendedGroupActivity extends ListActivity implements Servic
         ListView recGroupFullList=(ListView)findViewById(android.R.id.list);
         // массив данных
         Integer init = resultData.getInt("init");
-        Log.i(LOG_TAG, "!!!");
-        Log.i(LOG_TAG, init.toString());
-        Log.i(LOG_TAG, "!!!");
         String[] recomGroupsNames = resultData.getStringArray("title");
-        Log.i(LOG_TAG, recomGroupsNames[0]);
         String[] recomGroupImages = resultData.getStringArray("img");
 
         ArrayList<Map<String, String>> summaryData = new ArrayList<Map<String, String>>(
@@ -74,7 +70,7 @@ public class MoreRecommendedGroupActivity extends ListActivity implements Servic
         // массив имен атрибутов, из которых будут читаться данные
         String[] from = { ATTRIBUTE_NAME_TEXT, ATTRIBUTE_NAME_IMAGE };
         // массив ID View-компонентов, в которые будут вставлять данные
-        int[] to = { R.id.bandName, R.id.recomGroupItem };
+        int[] to = { R.id.recomBandName, R.id.recomItemImg };
 
         // создаем адаптер
         RecommendedGroupAdapter recGroupAdapter = new RecommendedGroupAdapter(this, summaryData, R.layout.activity_recommended_group_item, from, to);
