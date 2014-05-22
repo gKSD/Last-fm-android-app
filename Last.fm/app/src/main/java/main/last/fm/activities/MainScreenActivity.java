@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -57,6 +59,7 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
 
         Log.i(LOG_TAG, "123456");
         lastFmServiceHelper.getRecomendedMusic(this, 1, itemAmount, ACTIVITY_ID, resultReceiver);
+        lastFmServiceHelper.getNewReleases(this, 1, itemAmount, ACTIVITY_ID, resultReceiver);
 
         final MainScreenActivity ptr = this;
 
@@ -111,8 +114,8 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             }
         });
 
-        RelativeLayout relativeLayout1 = (RelativeLayout) findViewById(R.id.recomGroup1);
-        relativeLayout1.setOnClickListener(new View.OnClickListener() {
+        FrameLayout frameLayout1 = (FrameLayout) findViewById(R.id.recomGroup1);
+        frameLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ptr, ConcreteMusicActivity.class);
@@ -124,8 +127,8 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             }
         });
 
-        RelativeLayout relativeLayout2 = (RelativeLayout) findViewById(R.id.recomGroup2);
-        relativeLayout2.setOnClickListener(new View.OnClickListener() {
+        FrameLayout frameLayout2 = (FrameLayout) findViewById(R.id.recomGroup2);
+        frameLayout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -135,8 +138,8 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             }
         });
 
-        RelativeLayout relativeLayout3 = (RelativeLayout) findViewById(R.id.recomGroup3);
-        relativeLayout3.setOnClickListener(new View.OnClickListener() {
+        FrameLayout frameLayout3 = (FrameLayout) findViewById(R.id.recomGroup3);
+        frameLayout3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -146,8 +149,8 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             }
         });
 
-        RelativeLayout relativeLayout4 = (RelativeLayout) findViewById(R.id.recomGroup4);
-        relativeLayout4.setOnClickListener(new View.OnClickListener() {
+        FrameLayout frameLayout4 = (FrameLayout) findViewById(R.id.recomGroup4);
+        frameLayout4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -156,6 +159,8 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
 
             }
         });
+
+        //
     }
 
 
@@ -179,7 +184,7 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             int code = resultData.getInt("init");
 
             String[] titles = resultData.getStringArray("title");
-            String[] imgSrc = resultData.getStringArray("img");
+            String[] img = resultData.getStringArray("img");
 
             Log.i(LOG_TAG, titles[0]);
             Log.i(LOG_TAG, titles[1]);
@@ -187,7 +192,7 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
 
 
             int n1 = titles.length;
-            int n2 = imgSrc.length;
+            int n2 = img.length;
             int n = Math.min(n1, n2);
 
             switch(code)
@@ -204,8 +209,8 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
                         textView.setText(titles[0]);
                     }*/
 
-                    //RelativeLayout relativeLayout1 = (RelativeLayout) findViewById(R.id.recomGroup1);
-                    //Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(relativeLayout1);
+                    ImageView imageView1 = (ImageView) findViewById(R.id.recomImg1);
+                    Picasso.with(this).load(img[0]).into(imageView1);
 
                     TextView textView = (TextView) findViewById(R.id.recomName1);
                     textView.setText(titles[0]);
