@@ -66,8 +66,7 @@
                 android:id="@+id/recomImg1"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/icon_lastfm"/>
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/recomName1"
                 android:layout_width="match_parent"
@@ -104,8 +103,7 @@
             <ImageView
                 android:id="@+id/recomImg2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/icon_lastfm"/>
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/recomName2"
                 android:layout_width="match_parent"
@@ -148,8 +146,7 @@
             <ImageView
                 android:id="@+id/recomImg3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/icon_lastfm"/>
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/recomName3"
                 android:layout_width="match_parent"
@@ -184,8 +181,7 @@
             <ImageView
                 android:id="@+id/recomImg4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/icon_lastfm"/>
+                android:layout_height="match_parent"/>
             <TextView
                 android:id="@+id/recomName4"
                 android:layout_width="match_parent"

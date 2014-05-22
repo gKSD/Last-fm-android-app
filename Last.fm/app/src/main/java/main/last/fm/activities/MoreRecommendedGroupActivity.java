@@ -64,6 +64,7 @@ public class MoreRecommendedGroupActivity extends ListActivity implements Servic
         for (int i = 0; i < recomGroupsNames.length; i++) {
             m = new HashMap<String, String>();
             m.put(ATTRIBUTE_NAME_TEXT, recomGroupsNames[i]);
+            m.put(ATTRIBUTE_NAME_IMAGE, recomGroupImages[i]);
             summaryData.add(m);
         }
 
