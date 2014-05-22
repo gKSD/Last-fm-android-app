@@ -1,7 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:id="@+id/newRel2"
+    android:layout_weight="1">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/icon_lastfm"/>
+           <TextView
+               android:id="@+id/months"
+               android:layout_width="28dp"
+               android:layout_height="16dp"
+               android:layout_gravity="bottom"
+               android:padding="3dp"
+               android:layout_marginBottom="26dp"
+               android:fontFamily="sans-serif"
+               android:background="#FF0000"               android:gravity="center"
+               android:textSize="10dp"
+               android:textColor="#fff"
+               android:text="MAR"/>
+          <TextView
+               android:id="@+id/day"
+               android:layout_width="28dp"
+               android:layout_height="27dp"
+               android:layout_gravity="bottom"
+               android:fontFamily="sans-serif"
+               android:background="#ffffff"
+               android:gravity="center"
+               android:textSize="20dp"
+               android:textColor="#000"
+               android:text="12"/>
+          <TextView
+               android:id="@+id/newRelName2"
+               android:layout_width="fill_parent"
+               android:layout_height="20dp"
+              android:layout_marginLeft="28dp"
+               android:layout_gravity="bottom"
+               android:text="asdasdasdfa"
+               android:textColor="#fff"
+               android:textSize="14dp"
+               android:background="#88000000"
+               android:layout_marginBottom="22dp"
+               android:fontFamily="sans-serif"
+               android:paddingLeft="8dp"/>
+           <TextView
+               android:id="@+id/newRelSimilar2"
+               android:layout_width="match_parent"
+               android:layout_height="22dp"
+               android:layout_marginLeft="28dp"
+               android:layout_gravity="bottom"
+               android:text="asdasdasdfa"
+               android:textColor="#ffffff"
+               android:background="#88000000"
+               android:textSize="12dp"
+               android:fontFamily="sans-serif"
+               android:paddingLeft="8dp"/>
 
-</LinearLayout>
+</FrameLayout>

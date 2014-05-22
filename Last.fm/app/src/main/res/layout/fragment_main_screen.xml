@@ -55,71 +55,81 @@
         android:layout_width="match_parent"
         android:layout_height="179dp"
         android:orientation="horizontal">
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/recomGroup1"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1">
-            <LinearLayout
+            <ImageView
+                android:id="@+id/recomImg1"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:background="#70000000"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_lastfm"/>
             <TextView
                 android:id="@+id/recomName1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
                 android:text="asdasdasdfa"
+                android:paddingLeft="8dp"
                 android:textColor="#fff"
                 android:textSize="14dp"
+                android:background="#88000000"
+                android:layout_marginBottom="22dp"
                 android:fontFamily="sans-serif"
-                android:drawablePadding="40dp"/>
+                android:drawablePadding="108dp"/>
             <TextView
                 android:id="@+id/recomSimilar1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:paddingLeft="8dp"
                 android:text="asdasdasdfa"
-                android:textColor="#80ffff"
+                android:textColor="#80ffffff"
+                android:background="#88000000"
                 android:textSize="12dp"
                 android:fontFamily="sans-serif"/>
-            </LinearLayout>
-        </RelativeLayout>
+        </FrameLayout>
 
-        <RelativeLayout
-            android:id="@+id/recomGroup2"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="2dp"
+            android:id="@+id/recomGroup2"
             android:background="@drawable/icon_lastfm"
-            android:layout_weight="1" >
-            <LinearLayout
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/recomImg2"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:background="#70000000"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/recomName2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#fff"
-                    android:textSize="14dp"
-                    android:fontFamily="sans-serif"/>
-                <TextView
-                    android:id="@+id/recomSimilar2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#80ffff"
-                    android:textSize="12dp"
-                    android:fontFamily="sans-serif"/>
-            </LinearLayout>
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_lastfm"/>
+            <TextView
+                android:id="@+id/recomName2"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:paddingLeft="8dp"
+                android:text="asdasdasdfa"
+                android:textColor="#fff"
+                android:textSize="14dp"
+                android:background="#88000000"
+                android:layout_marginBottom="22dp"
+                android:fontFamily="sans-serif"
+                android:drawablePadding="108dp"/>
+            <TextView
+                android:id="@+id/recomSimilar2"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:paddingLeft="8dp"
+                android:text="asdasdasdfa"
+                android:textColor="#80ffffff"
+                android:background="#88000000"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif"/>
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -127,70 +137,79 @@
         android:layout_width="match_parent"
         android:layout_height="179dp"
         android:orientation="horizontal">
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/recomGroup3"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1">
-            <LinearLayout
+            <ImageView
+                android:id="@+id/recomImg3"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:background="#70000000"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/recomName3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#fff"
-                    android:textSize="14dp"
-                    android:fontFamily="sans-serif"/>
-                <TextView
-                    android:id="@+id/recomSimilar3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#80ffff"
-                    android:textSize="12dp"
-                    android:fontFamily="sans-serif"/>
-            </LinearLayout>
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_lastfm"/>
+            <TextView
+                android:id="@+id/recomName3"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:text="asdasdasdfa"
+                android:textColor="#fff"
+                android:textSize="14dp"
+                android:background="#88000000"
+                android:layout_marginBottom="22dp"
+                android:fontFamily="sans-serif"
+                android:drawablePadding="108dp"/>
+            <TextView
+                android:id="@+id/recomSimilar3"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:text="asdasdasdfa"
+                android:textColor="#80ffffff"
+                android:background="#88000000"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif"/>
+        </FrameLayout>
 
-        <RelativeLayout
-            android:id="@+id/recomGroup4"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="2dp"
+            android:id="@+id/recomGroup4"
             android:background="@drawable/icon_lastfm"
-            android:layout_weight="1" >
-            <LinearLayout
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/recomImg4"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:background="#70000000"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/recomName4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#fff"
-                    android:textSize="14dp"
-                    android:fontFamily="sans-serif"/>
-                <TextView
-                    android:id="@+id/recomSimilar4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#80ffff"
-                    android:textSize="12dp"
-                    android:fontFamily="sans-serif"/>
-            </LinearLayout>
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_lastfm"/>
+            <TextView
+                android:id="@+id/recomName4"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:text="asdasdasdfa"
+                android:textColor="#fff"
+                android:paddingLeft="8dp"
+                android:textSize="14dp"
+                android:background="#88000000"
+                android:layout_marginBottom="22dp"
+                android:fontFamily="sans-serif"
+                android:drawablePadding="108dp"/>
+            <TextView
+                android:id="@+id/recomSimilar4"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:paddingLeft="8dp"
+                android:text="asdasdasdfa"
+                android:textColor="#80ffffff"
+                android:background="#88000000"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif"/>
+        </FrameLayout>
     </LinearLayout>
 
     <RelativeLayout
@@ -234,70 +253,80 @@
         android:layout_width="match_parent"
         android:layout_height="179dp"
         android:orientation="horizontal">
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:id="@+id/newRelGroup1"
+            android:id="@+id/newRel1"
             android:background="@drawable/icon_lastfm"
             android:layout_weight="1">
-            <LinearLayout
+            <ImageView
+                android:id="@+id/newRelImg1"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:background="#70000000"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/newRelName1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#fff"
-                    android:textSize="14dp"
-                    android:fontFamily="sans-serif"/>
-                <TextView
-                    android:id="@+id/newRelSimilar1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#80ffff"
-                    android:textSize="12dp"
-                    android:fontFamily="sans-serif"/>
-            </LinearLayout>
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_lastfm"/>
+            <TextView
+                android:id="@+id/newRelName1"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:paddingLeft="8dp"
+                android:text="asdasdasdfa"
+                android:textColor="#fff"
+                android:textSize="14dp"
+                android:background="#88000000"
+                android:layout_marginBottom="22dp"
+                android:fontFamily="sans-serif"
+                android:drawablePadding="108dp"/>
+            <TextView
+                android:id="@+id/newRelSimilar3"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:text="asdasdasdfa"
+                android:paddingLeft="8dp"
+                android:textColor="#80ffffff"
+                android:background="#88000000"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif"/>
+        </FrameLayout>
 
-        <RelativeLayout
-            android:id="@+id/newRelGroup2"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/icon_lastfm"
-            android:layout_weight="1" >
-            <LinearLayout
+            android:id="@+id/newRel2"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/newRelImg2"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:background="#70000000"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/newRelName2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#fff"
-                    android:textSize="14dp"
-                    android:fontFamily="sans-serif"/>
-                <TextView
-                    android:id="@+id/newRelSimilar2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#80ffff"
-                    android:textSize="12dp"
-                    android:fontFamily="sans-serif"/>
-            </LinearLayout>
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_lastfm"/>
+            <TextView
+                android:id="@+id/newRelName2"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:text="asdasdasdfa"
+                android:paddingLeft="8dp"
+                android:textColor="#fff"
+                android:textSize="14dp"
+                android:background="#88000000"
+                android:layout_marginBottom="22dp"
+                android:fontFamily="sans-serif"
+                android:drawablePadding="108dp"/>
+            <TextView
+                android:id="@+id/newRelSimilar2"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom"
+                android:paddingLeft="8dp"
+                android:text="asdasdasdfa"
+                android:textColor="#80ffffff"
+                android:background="#88000000"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif"/>
+        </FrameLayout>
     </LinearLayout>
 
 
@@ -341,73 +370,67 @@
             android:layout_alignParentBottom="false"
             android:layout_centerVertical="true" />
     </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/upcomGroup"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="fill_parent"
         android:layout_height="128dp"
         android:orientation="vertical"
-        android:layout_marginLeft="2dp"
-        android:background="@drawable/icon_lastfm"
-        android:layout_weight="1" >
-        <LinearLayout
+        android:id="@+id/upComLayout"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/upComImg1"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/months"
-                    android:layout_width="match_parent"
-                    android:layout_height="16dp"
-                    android:fontFamily="sans-serif"
-                    android:background="#FF0000"
-                    android:gravity="center"
-                    android:textSize="10dp"
-                    android:textColor="#fff"
-                    android:text="MAR"/>
-                <TextView
-                    android:id="@+id/day"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:fontFamily="sans-serif"
-                    android:background="#fff"
-                    android:gravity="center"
-                    android:textSize="20dp"
-                    android:textColor="#000"
-                    android:text="12"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/check1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#70000000"
-                android:orientation="vertical"
-                android:layout_weight="20">
-                <TextView
-                    android:id="@+id/upcomName2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#fff"
-                    android:textSize="14dp"
-                    android:fontFamily="sans-serif"/>
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_lastfm"/>
+        <TextView
+            android:id="@+id/months"
+            android:layout_width="28dp"
+            android:layout_height="16dp"
+            android:layout_gravity="bottom"
+            android:padding="3dp"
+            android:layout_marginBottom="26dp"
+            android:fontFamily="sans-serif"
+            android:background="#FF0000"
+            android:textSize="10dp"
+            android:textColor="#fff"
+            android:text="MAR"/>
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="28dp"
+            android:layout_height="27dp"
+            android:layout_gravity="bottom"
+            android:fontFamily="sans-serif"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:text="12"/>
+        <TextView
+            android:id="@+id/upComBandName"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="28dp"
+            android:layout_gravity="bottom"
+            android:text="asdasdasdfa"
+            android:textColor="#fff"
+            android:textSize="14dp"
+            android:background="#88000000"
+            android:layout_marginBottom="22dp"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="8dp"/>
+        <TextView
+            android:id="@+id/upComSimilar"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_marginLeft="28dp"
+            android:layout_gravity="bottom"
+            android:text="asdasdasdfa"
+            android:textColor="#ffffff"
+            android:background="#88000000"
+            android:textSize="12dp"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="8dp"/>
 
-                <TextView
-                    android:id="@+id/upcomSimilar2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="asdasdasdfa"
-                    android:textColor="#80ffff"
-                    android:textSize="12dp"
-                    android:fontFamily="sans-serif"/>
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
-
+    </FrameLayout>
 </LinearLayout>
 
 </ScrollView>
