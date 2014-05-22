@@ -82,11 +82,22 @@ public class LastFmService extends IntentService {
                     e.printStackTrace();
                 }
                 break;
-            case 1:
+            case 1 :
+            case 2 :
                 urlParams = intent.getStringExtra("getParams");
                 int limit = intent.getIntExtra("limit", 0);
                 try {
                     status = serviceProcessor.ProcessGetRecommendedMusic(getBaseContext(), urlParams, bundle, limit);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 3:
+                urlParams  = intent.getStringExtra("getParams");
+                try {
+                    status = serviceProcessor.ProcessNewReleases(getBaseContext(), urlParams, bundle, limit);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (Exception e) {
