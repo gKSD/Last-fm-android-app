@@ -97,7 +97,7 @@ public class LastFmService extends IntentService {
             case 3:
                 urlParams  = intent.getStringExtra("getParams");
                 try {
-                    status = serviceProcessor.ProcessNewReleases(getBaseContext(), urlParams, bundle, limit);
+                    status = serviceProcessor.ProcessNewReleases(getBaseContext(), urlParams, bundle);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (Exception e) {
