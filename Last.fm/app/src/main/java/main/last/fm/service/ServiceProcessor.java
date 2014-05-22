@@ -43,6 +43,7 @@ public class ServiceProcessor {
                     context.getContentResolver().insert(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), contentValues);
             }
        bundle.putString("sk", processor.getSessionKey());
+       bundle.putString("username", processor.getUserName());
        Log.i(LOG_TAG, response);
 
        return status;
@@ -57,6 +58,7 @@ public class ServiceProcessor {
         String[] urls = new String[limit];
         processor.ProcessRecomendedArtists(response, limit, artist, urls);
         Log.i(LOG_TAG, artist[0]);
+        bundle.putInt("init", LastFmService.IS_MUSIC);
         bundle.putStringArray("title", artist);
         bundle.putStringArray("img", urls);
         return 0;
