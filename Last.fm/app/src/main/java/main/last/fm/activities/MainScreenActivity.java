@@ -22,7 +22,7 @@ import main.last.fm.service.ServiceResultReceiver;
 /**
  * Created by step on 17.04.14.
  */
-public class MainScreenActivity extends BaseActivity  implements ServiceResultReceiver.Receiver{
+public class MainScreenActivity extends main.last.fm.activities.BaseActivity implements ServiceResultReceiver.Receiver{
     private static final String LOG_TAG = "MainScreenActivity";
 
     private LastFmServiceHelper lastFmServiceHelper;

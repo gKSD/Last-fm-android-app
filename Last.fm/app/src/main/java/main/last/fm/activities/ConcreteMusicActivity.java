@@ -14,7 +14,7 @@ import main.last.fm.service.ServiceResultReceiver;
 /**
  * Created by sofia on 20.05.14.
  */
-public class ConcreteMusicActivity extends BaseActivity implements ServiceResultReceiver.Receiver {
+public class ConcreteMusicActivity extends main.last.fm.activities.BaseActivity implements ServiceResultReceiver.Receiver {
 
     private static final String LOG_TAG = "ConcreteMusicActivity";
 
