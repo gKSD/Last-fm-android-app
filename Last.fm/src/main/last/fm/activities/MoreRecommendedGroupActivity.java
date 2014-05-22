@@ -1,19 +1,23 @@
 package main.last.fm.activities;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import main.last.fm.R;
-import main.last.fm.service.LastFmService;
+import main.last.fm.adapters.RecommendedGroupAdapter;
 import main.last.fm.service.LastFmServiceHelper;
 import main.last.fm.service.ServiceResultReceiver;
 
 /**
  * Created by sofia on 21.05.14.
  */
-public class MoreRecommendedGroupActivity extends Activity implements ServiceResultReceiver.Receiver{
+public class MoreRecommendedGroupActivity extends ListActivity implements ServiceResultReceiver.Receiver{
     //ListActivity
     private static final String LOG_TAG = "MoreRecommendedMusicActivity";
     private final int ACTIVITY_ID = 2;
@@ -31,7 +35,7 @@ public class MoreRecommendedGroupActivity extends Activity implements ServiceRes
         super.onCreate(savedInstanceState);
 
         Log.d(LOG_TAG, getIntent().getLongExtra("order_id", -1) + "");
-        setContentView(R.layout.activity_more_recommended_group);
+        //setContentView(R.layout.activity_more_recommended_group);
         resultReceiver = new ServiceResultReceiver(new Handler());
         resultReceiver.setReceiver(this);
         lastFmServiceHelper = LastFmServiceHelper.getInstance();
@@ -41,6 +45,14 @@ public class MoreRecommendedGroupActivity extends Activity implements ServiceRes
 
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
-
+        setContentView(R.layout.activity_more_recommended_group);
+        ListView check=(ListView)findViewById(android.R.id.list);
+        String[] recomGroupsNames = resultData.getStringArray("title");
+        String[] recomGroupImages = resultData.getStringArray("img");
+        ArrayList<String[]> checkArr = new ArrayList<String[]>();
+        checkArr.add(recomGroupsNames);
+        checkArr.add(recomGroupImages);
+        RecommendedGroupAdapter adapter = new RecommendedGroupAdapter(this, R.layout.activity_recommended_group_item, checkArr);
+        check.setAdapter(adapter);
     }
 }
