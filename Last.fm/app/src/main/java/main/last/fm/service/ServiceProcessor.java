@@ -57,10 +57,8 @@ public class ServiceProcessor {
         String[] urls = new String[limit];
         processor.ProcessRecomendedArtists(response, limit, artist, urls);
         Log.i(LOG_TAG, artist[0]);
-        bundle.putStringArray("title", artist);
-        bundle.putStringArray("img", urls);
-        bundle.putInt("init",101);
-        return 0;
+        bundle.putStringArray("title", artist); 
+
     }
 }
 
