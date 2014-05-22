@@ -257,16 +257,16 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
                     textView2.setText(titles[1]);
 
                     ImageView imageView3 = (ImageView) findViewById(R.id.recomImg3);
-                    Picasso.with(this).load(img[1]).into(imageView3);
+                    Picasso.with(this).load(img[2]).into(imageView3);
 
                     TextView textView3 = (TextView) findViewById(R.id.recomName3);
-                    textView3.setText(titles[1]);
+                    textView3.setText(titles[2]);
 
                     ImageView imageView4 = (ImageView) findViewById(R.id.recomImg4);
-                    Picasso.with(this).load(img[1]).into(imageView4);
+                    Picasso.with(this).load(img[3]).into(imageView4);
 
                     TextView textView4 = (TextView) findViewById(R.id.recomName4);
-                    textView4.setText(titles[1]);
+                    textView4.setText(titles[3]);
 
                     break;
                 case LastFmService.IS_UPCOMING_EVENT:
