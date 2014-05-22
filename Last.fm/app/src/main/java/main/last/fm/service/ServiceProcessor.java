@@ -67,7 +67,6 @@ public class ServiceProcessor {
     public int ProcessNewReleases(Context context, String urlParams, Bundle bundle, int limit) throws Exception {
         String method = new String("user.getNewReleases");
         String response = new String(executor.exec(method, urlParams, "", false));
-
         MainScreenProcessor processor = new MainScreenProcessor();
         String[] artist = new String[limit];
         String[] urls = new String[limit];
