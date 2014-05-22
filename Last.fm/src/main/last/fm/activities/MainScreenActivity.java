@@ -59,6 +59,7 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
         final MainScreenActivity ptr = this;
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //УДАЛЮ ПОТОМ
         Bundle resultData = new Bundle();
         resultData.putInt("title", LastFmService.IS_MUSIC);
         onReceiveResult(33, resultData);
@@ -86,7 +87,6 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
             public void onClick(View arg0) {
 
                 // TODO Auto-generated method stub
-                //startActivity(new Intent(MainActivity.this, ActivityOk.class));
                 Intent intent = new Intent(ptr, MoreNewReleasesActivity.class);
                 startActivity(intent);
                 finish();
