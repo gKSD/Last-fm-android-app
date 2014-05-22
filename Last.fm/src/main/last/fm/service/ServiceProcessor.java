@@ -12,6 +12,7 @@ import org.json.JSONException;
 
 import main.last.fm.content.provider.LastFmMainData;
 import main.last.fm.processor.LoginProcessor;
+import main.last.fm.processor.MainScreenProcessor;
 import main.last.fm.webservice.RestExecutor;
 
 /**
@@ -48,10 +49,12 @@ public class ServiceProcessor {
 
     }
 
-    public int ProcessGetRecommendedMusic(Context context, String urlParams, Bundle bundle) throws Exception {
+    public int ProcessGetRecommendedMusic(Context context, String urlParams, Bundle bundle, int limit) throws Exception {
         String method = new String("user.getRecommendedArtists");
         String response = new String(executor.exec(method, urlParams, "", false));
+        MainScreenProcessor processor = new MainScreenProcessor();
 
+        processor.ProcessRecomendedArtists(response, limit);
         return 0;
     }
 }
