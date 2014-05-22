@@ -136,6 +136,7 @@ public class LoginActivity extends Activity implements ServiceResultReceiver.Rec
             case LastFmService.SERVICE_STATUS_OK:
                 //progressDialog.dismiss();
                 SESSION_KEY = resultData.getString("sk");
+                USER_NAME = resultData.getString("username");
                 Intent intent = new Intent(this, MainScreenActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

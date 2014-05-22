@@ -24,9 +24,6 @@ public class LoginProcessor {
     public String getSessionKey() {
         return sessionKey;
     }
-    public String getUserName() {
-        return userName;
-    }
 
     public String getUniName() {
         return uniName;

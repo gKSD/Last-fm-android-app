@@ -64,6 +64,7 @@ public class LastFmService extends IntentService {
         ResultReceiver receiver =  intent.getParcelableExtra(INTENT_SERVICE_EXTRA_STATUS_RECEIVER);
         String urlParams = "";
         String PostParams="";
+        int limit =0;
 
         Bundle bundle = new Bundle();
 
@@ -85,7 +86,7 @@ public class LastFmService extends IntentService {
             case 1 :
             case 2 :
                 urlParams = intent.getStringExtra("getParams");
-                int limit = intent.getIntExtra("limit", 0);
+                limit = intent.getIntExtra("limit", 0);
                 try {
                     status = serviceProcessor.ProcessGetRecommendedMusic(getBaseContext(), urlParams, bundle, limit);
                 } catch (JSONException e) {
@@ -94,10 +95,11 @@ public class LastFmService extends IntentService {
                     e.printStackTrace();
                 }
                 break;
-            case 3:
+            case 20:
                 urlParams  = intent.getStringExtra("getParams");
+                limit = intent.getIntExtra("limit", 0);
                 try {
-                    status = serviceProcessor.ProcessNewReleases(getBaseContext(), urlParams, bundle);
+                    status = serviceProcessor.ProcessNewReleases(getBaseContext(), urlParams, bundle, limit);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (Exception e) {
