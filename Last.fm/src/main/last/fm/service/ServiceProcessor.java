@@ -53,8 +53,11 @@ public class ServiceProcessor {
         String method = new String("user.getRecommendedArtists");
         String response = new String(executor.exec(method, urlParams, "", false));
         MainScreenProcessor processor = new MainScreenProcessor();
-
-        processor.ProcessRecomendedArtists(response, limit);
+        String[] artist = new String[limit];
+        String[] urls = new String[limit];
+        processor.ProcessRecomendedArtists(response, limit, artist, urls);
+        bundle.putStringArray("title", artist);
+        bundle.putStringArray("img", urls);
         return 0;
     }
 }
