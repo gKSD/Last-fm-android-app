@@ -52,8 +52,12 @@ public class MoreRecommendedGroupActivity extends ListActivity implements Servic
         setContentView(R.layout.activity_more_recommended_group);
         ListView recGroupFullList=(ListView)findViewById(android.R.id.list);
         // массив данных
+        Integer init = resultData.getInt("init");
+        Log.i(LOG_TAG, "!!!");
+        Log.i(LOG_TAG, init.toString());
+        Log.i(LOG_TAG, "!!!");
         String[] recomGroupsNames = resultData.getStringArray("title");
-        Log.i(LOG_TAG, recomGroupsNames[2]);
+        Log.i(LOG_TAG, recomGroupsNames[0]);
         String[] recomGroupImages = resultData.getStringArray("img");
 
         ArrayList<Map<String, String>> summaryData = new ArrayList<Map<String, String>>(

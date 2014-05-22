@@ -29,6 +29,7 @@ public class MainScreenProcessor {
             artist[i] = artists.getJSONObject(i).get("name").toString();
             urls[i] = artists.getJSONObject(i).getJSONArray("image").getJSONObject(2).get("#text").toString();
         }
+
         //  String s = "\\u0421\\u043b\\u043e\\u0442";
         // String s = new String("\\u0421\\u043b\\u043e\\u0442", "UTF-8")
     }
