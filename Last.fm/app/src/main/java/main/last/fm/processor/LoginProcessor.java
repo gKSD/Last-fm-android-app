@@ -15,6 +15,7 @@ public class LoginProcessor {
     private String uniName;
     private String sessionKey;
     private String errorMessage;
+    private String userName;
    public LoginProcessor() {
 
    };
@@ -47,4 +48,5 @@ public class LoginProcessor {
         }
         return LastFmService.SERVICE_STATUS_ERROR;
     }
+
 }
