@@ -64,6 +64,7 @@ public class LastFmServiceHelper{
         final Intent intent = new Intent(context, LastFmService.class);
         intent.putExtra("getParams",url);
         intent.putExtra("id", ActivityNumber);
+        intent.putExtra("limit", limit);
         intent.putExtra (LastFmService.INTENT_SERVICE_EXTRA_STATUS_RECEIVER, receiver);
 
         context.startService(intent);
