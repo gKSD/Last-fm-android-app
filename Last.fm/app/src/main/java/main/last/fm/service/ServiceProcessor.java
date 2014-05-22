@@ -42,7 +42,7 @@ public class ServiceProcessor {
                     contentValues.put(LastFmMainData.UsersColumns.MOBILE_SESSION, processor.getSessionKey());
                     context.getContentResolver().insert(Uri.parse("content://" + LastFmMainData.CONTENT_AUTHORITY + "/" + LastFmMainData.PATH_USERS), contentValues);
             }
-       bundle.putString("sk",processor.getSessionKey());
+       bundle.putString("sk", processor.getSessionKey());
        Log.i(LOG_TAG, response);
 
        return status;
@@ -57,8 +57,13 @@ public class ServiceProcessor {
         String[] urls = new String[limit];
         processor.ProcessRecomendedArtists(response, limit, artist, urls);
         Log.i(LOG_TAG, artist[0]);
-        bundle.putStringArray("title", artist); 
+        bundle.putStringArray("title", artist);
+        return 0;
+    }
 
+    public int ProcessNewReleases(Context context, String urlParams, Bundle bundle) throws Exception {
+        
+        return 0;
     }
 }
 
