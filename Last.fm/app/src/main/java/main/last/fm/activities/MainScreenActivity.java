@@ -170,7 +170,7 @@ public class MainScreenActivity extends main.last.fm.activities.BaseActivity imp
 
         Log.i(LOG_TAG, "77777777777777777777777777777777777777777777777777777777777777777777");
 
-        if (resultData.getInt("title") >= 0) //!!!!!!
+        if (resultData.getInt("init") >= 0) //!!!!!!
         {
             int code = resultData.getInt("init");
 
