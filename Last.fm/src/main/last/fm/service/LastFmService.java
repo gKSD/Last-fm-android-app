@@ -41,6 +41,10 @@ public class LastFmService extends IntentService {
     public static final int SERVICE_STATUS_ERROR = 0;
     public static final int SERVICE_STATUS_PROCESSING = 2;
 
+    public static final int IS_MUSIC = 101;
+    public static final int IS_RELEASE = 102;
+    public static final int IS_UPCOMING_EVENT = 103;
+
     public static final String INTENT_SERVICE_EXTRA_STATUS_RECEIVER = "main.last.fm.RESULT_RECEIVER";
 
     public LastFmService () {

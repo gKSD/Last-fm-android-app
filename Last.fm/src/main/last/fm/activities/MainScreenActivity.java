@@ -2,6 +2,8 @@ package main.last.fm.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -10,8 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import main.last.fm.R;
+import main.last.fm.service.LastFmService;
 import main.last.fm.service.LastFmServiceHelper;
 import main.last.fm.service.ServiceResultReceiver;
 
@@ -54,6 +58,15 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
 
         final MainScreenActivity ptr = this;
 
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //УДАЛЮ ПОТОМ
+        Bundle resultData = new Bundle();
+        resultData.putInt("title", LastFmService.IS_MUSIC);
+        onReceiveResult(33, resultData);
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
         Button button1 = (Button)findViewById(R.id.moreButton);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +87,6 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
             public void onClick(View arg0) {
 
                 // TODO Auto-generated method stub
-                //startActivity(new Intent(MainActivity.this, ActivityOk.class));
                 Intent intent = new Intent(ptr, MoreNewReleasesActivity.class);
                 startActivity(intent);
                 finish();
@@ -101,7 +113,12 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
         relativeLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(ptr, ConcreteMusicActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("title", ((TextView) ptr.findViewById(R.id.recomName1)).getText().toString());
+                startActivity(intent);
+                finish();
+                //ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
             }
         });
 
@@ -109,6 +126,9 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
         relativeLayout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                TextView textView = (TextView) ptr.findViewById(R.id.recomName2);
+                ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
 
             }
         });
@@ -118,6 +138,9 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
             @Override
             public void onClick(View view) {
 
+                TextView textView = (TextView) ptr.findViewById(R.id.recomName3);
+                ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
+
             }
         });
 
@@ -126,6 +149,9 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
             @Override
             public void onClick(View view) {
 
+                TextView textView = (TextView) ptr.findViewById(R.id.recomName4);
+                ptr.getLastFmServiceHelper().getConcreteMusic(ptr, textView.getText().toString(), ACTIVITY_ID, resultReceiver);
+
             }
         });
     }
@@ -133,6 +159,53 @@ public class MainScreenActivity extends BaseActivity  implements ServiceResultRe
 
     @Override
     public void onReceiveResult(int resultCode, Bundle resultData) {
+
+        Log.i(LOG_TAG, "44444444444444444444444444444444444444444444444444444444444444444");
+        RelativeLayout relativeLayout1 = (RelativeLayout) findViewById(R.id.recomGroup1);
+        //relativeLayout1.setBackground(Drawable.createFromPath("@drawable/ic_launcher.png"));
+        Resources res = getResources(); //resource handle
+        Drawable drawable = res.getDrawable(R.drawable.ic_launcher); //new Image that was added to the res folder
+        relativeLayout1.setBackground(drawable);
+
+
+        Log.i(LOG_TAG, "77777777777777777777777777777777777777777777777777777777777777777777");
+
+        if (resultData.getInt("title") >= 0) //!!!!!!
+        {
+            int code = resultData.getInt("init");
+
+            //String[] titles = resultData.getStringArray("title");
+            //String[] imgSrc = resultData.getStringArray("img");
+
+
+            //int n1 = titles.length;
+            //int n2 = imgSrc.length;
+            //int n = Math.min(n1, n2);
+
+
+            switch(code)
+            {
+                case LastFmService.IS_MUSIC:
+                    /*for (int i = 0; i < n; i++)
+                    {
+                        RelativeLayout relativeLayout1 = (RelativeLayout) findViewById(R.id.recomGroup1);
+                        Resources res = getResources(); //resource handle
+                        Drawable drawable = res.getDrawable(R.drawable.ic_launcher); //new Image that was added to the res folder
+                        relativeLayout1.setBackground(drawable);
+
+                        TextView textView = (TextView) findViewById(R.id.recomName1);
+                        textView.setText(titles[0]);
+                    }*/
+
+                    break;
+                case LastFmService.IS_UPCOMING_EVENT:
+                    break;
+                case LastFmService.IS_RELEASE:
+                    break;
+                default:
+                    break;
+            }
+        }
 
     }
 
