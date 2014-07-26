@@ -10,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +30,7 @@ public class RecommendedGroupAdapter extends SimpleAdapter {    //см. http://w
 
     public RecommendedGroupAdapter(Context context, ArrayList<Map<String, String>>  data, int resource, String[] from, int[] to) {
         super(context, data, resource, from, to);
+        this.context = context;
     }
 
     /*@Override
@@ -50,6 +53,7 @@ public class RecommendedGroupAdapter extends SimpleAdapter {    //см. http://w
     @Override
     public void setViewImage(ImageView v, int value) {
         // метод супер-класса
+        Picasso.with(this.context).load(value).into(v);
         super.setViewImage(v, value);
 
     }
