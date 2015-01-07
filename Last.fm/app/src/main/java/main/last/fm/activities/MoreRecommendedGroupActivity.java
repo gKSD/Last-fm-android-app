@@ -73,6 +73,7 @@ public class MoreRecommendedGroupActivity extends ListActivity implements Servic
         // массив ID View-компонентов, в которые будут вставлять данные
         int[] to = { R.id.recomBandName, R.id.recomItemImg };
 
+
         // создаем адаптер
         RecommendedGroupAdapter recGroupAdapter = new RecommendedGroupAdapter(this, summaryData, R.layout.activity_recommended_group_item, from, to);
         recGroupFullList.setAdapter(recGroupAdapter);
