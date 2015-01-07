@@ -213,36 +213,20 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
             Log.i(LOG_TAG, "TTTTTTT");
             int code = resultData.getInt("init");
 
-            String[] titles = resultData.getStringArray("title");
-            String[] img = resultData.getStringArray("img");
-
-            Log.i(LOG_TAG, titles[0]);
-            Log.i(LOG_TAG, titles[1]);
-            Log.i(LOG_TAG, titles[3]);
-
-            Log.i(LOG_TAG, img[0]);
-
-
-            int n1 = titles.length;
-            int n2 = img.length;
-            int n = Math.min(n1, n2);
-
-            Log.i(LOG_TAG, "99999999999999999");
 
             switch(code)
             {
                 case LastFmService.IS_MUSIC:
-                    /*for (int i = 0; i < n; i++)
-                    {
-                        RelativeLayout relativeLayout1 = (RelativeLayout) findViewById(R.id.recomGroup1);
-                        Resources res = getResources(); //resource handle
-                        Drawable drawable = res.getDrawable(R.drawable.ic_launcher); //new Image that was added to the res folder
-                        relativeLayout1.setBackground(drawable);
 
-                        TextView textView = (TextView) findViewById(R.id.recomName1);
-                        textView.setText(titles[0]);
-                    }*/
-                    Log.i(LOG_TAG, "8888888888888888");
+                    String[] titles = resultData.getStringArray("title");
+                    String[] img = resultData.getStringArray("img");
+
+                    Log.i(LOG_TAG, titles[0]);
+                    Log.i(LOG_TAG, titles[1]);
+                    Log.i(LOG_TAG, titles[3]);
+
+                    Log.i(LOG_TAG, img[0]);
+
 
                     ImageView imageView1 = (ImageView) findViewById(R.id.recomImg1);
                     Picasso.with(this).load(img[0]).into(imageView1);
@@ -272,6 +256,24 @@ public class MainScreenActivity extends BaseActivity implements ServiceResultRec
                 case LastFmService.IS_UPCOMING_EVENT:
                     break;
                 case LastFmService.IS_RELEASE:
+                    /*String[] titles1 = resultData.getStringArray("title");
+                    String[] img1 = resultData.getStringArray("img");
+
+                    Log.i(LOG_TAG, titles1[0]);
+                    Log.i(LOG_TAG, titles1[1]);
+                    Log.i(LOG_TAG, img1[0]);
+
+                    ImageView imageView1 = (ImageView) findViewById(R.id.recomImg1);
+                    Picasso.with(this).load(img[0]).into(imageView1);
+
+                    TextView textView = (TextView) findViewById(R.id.recomName1);
+                    textView.setText(titles[0]);
+
+                    ImageView imageView2 = (ImageView) findViewById(R.id.recomImg2);
+                    Picasso.with(this).load(img[1]).into(imageView2);
+
+                    TextView textView2 = (TextView) findViewById(R.id.recomName2);
+                    textView2.setText(titles[1]);*/
                     break;
                 default:
                     break;
